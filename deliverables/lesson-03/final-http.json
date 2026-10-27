@@ -1,0 +1,1643 @@
+{
+  "checks": [
+    {
+      "body": {
+        "class_id": 1,
+        "class_name": "A 班",
+        "id": 1,
+        "must_change_password": false,
+        "role": "teacher",
+        "username": "teacher_a"
+      },
+      "method": "POST",
+      "name": "login:teacher_a",
+      "path": "/api/login",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_payload": {
+        "password": "[REDACTED]",
+        "username": "teacher_a"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "112",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Set-Cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 1,
+        "class_name": "A 班",
+        "csrf_token": "[REDACTED]",
+        "id": 1,
+        "must_change_password": false,
+        "role": "teacher",
+        "username": "teacher_a"
+      },
+      "method": "GET",
+      "name": "identity:teacher_a",
+      "path": "/api/me",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "192",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 2,
+        "class_name": "B 班",
+        "id": 2,
+        "must_change_password": false,
+        "role": "teacher",
+        "username": "teacher_b"
+      },
+      "method": "POST",
+      "name": "login:teacher_b",
+      "path": "/api/login",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_payload": {
+        "password": "[REDACTED]",
+        "username": "teacher_b"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "112",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Set-Cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 2,
+        "class_name": "B 班",
+        "csrf_token": "[REDACTED]",
+        "id": 2,
+        "must_change_password": false,
+        "role": "teacher",
+        "username": "teacher_b"
+      },
+      "method": "GET",
+      "name": "identity:teacher_b",
+      "path": "/api/me",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "192",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 1,
+        "class_name": "A 班",
+        "id": 3,
+        "must_change_password": false,
+        "role": "student",
+        "username": "student_a1"
+      },
+      "method": "POST",
+      "name": "login:student_a1",
+      "path": "/api/login",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_payload": {
+        "password": "[REDACTED]",
+        "username": "student_a1"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "113",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Set-Cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 1,
+        "class_name": "A 班",
+        "csrf_token": "[REDACTED]",
+        "id": 3,
+        "must_change_password": false,
+        "role": "student",
+        "username": "student_a1"
+      },
+      "method": "GET",
+      "name": "identity:student_a1",
+      "path": "/api/me",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "193",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 2,
+        "class_name": "B 班",
+        "id": 4,
+        "must_change_password": false,
+        "role": "student",
+        "username": "student_b1"
+      },
+      "method": "POST",
+      "name": "login:student_b1",
+      "path": "/api/login",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "request_payload": {
+        "password": "[REDACTED]",
+        "username": "student_b1"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "113",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Set-Cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 2,
+        "class_name": "B 班",
+        "csrf_token": "[REDACTED]",
+        "id": 4,
+        "must_change_password": false,
+        "role": "student",
+        "username": "student_b1"
+      },
+      "method": "GET",
+      "name": "identity:student_b1",
+      "path": "/api/me",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "193",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "GET",
+      "name": "anonymous:/api/me",
+      "path": "/api/me",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "GET",
+      "name": "anonymous:/api/materials",
+      "path": "/api/materials",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "GET",
+      "name": "anonymous:/api/materials/1",
+      "path": "/api/materials/1",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "GET",
+      "name": "anonymous:/api/materials/1/file",
+      "path": "/api/materials/1/file",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "GET",
+      "name": "anonymous:/api/knowledge-entries",
+      "path": "/api/knowledge-entries",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "GET",
+      "name": "anonymous:/api/knowledge-entries/1",
+      "path": "/api/knowledge-entries/1",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "POST",
+      "name": "anonymous:upload",
+      "path": "/api/materials/upload",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "账号或密码错误"
+      },
+      "method": "POST",
+      "name": "login-failure:teacher_a",
+      "path": "/api/login",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "34",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "error": "账号或密码错误"
+      },
+      "method": "POST",
+      "name": "login-failure:not_an_account",
+      "path": "/api/login",
+      "request_headers": {
+        "Content-Type": "application/json"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "34",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    },
+    {
+      "body": [
+        {
+          "byte_size": 28,
+          "class_id": 1,
+          "created_at": "2026-10-27T05:34:12.532601Z",
+          "id": 1,
+          "original_filename": "A 班-课程导论.txt",
+          "title": "A 班-课程导论.txt"
+        }
+      ],
+      "method": "GET",
+      "name": "own-class-list:teacher_a",
+      "path": "/api/materials?class_id=999\u0026role=teacher",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "160",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": [
+        {
+          "byte_size": 28,
+          "class_id": 2,
+          "created_at": "2026-10-27T05:34:12.540402Z",
+          "id": 2,
+          "original_filename": "B 班-学习指南.md",
+          "title": "B 班-学习指南.md"
+        }
+      ],
+      "method": "GET",
+      "name": "own-class-list:teacher_b",
+      "path": "/api/materials?class_id=999\u0026role=teacher",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "158",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": [
+        {
+          "byte_size": 28,
+          "class_id": 1,
+          "created_at": "2026-10-27T05:34:12.532601Z",
+          "id": 1,
+          "original_filename": "A 班-课程导论.txt",
+          "title": "A 班-课程导论.txt"
+        }
+      ],
+      "method": "GET",
+      "name": "own-class-list:student_a1",
+      "path": "/api/materials?class_id=999\u0026role=teacher",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "160",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": [
+        {
+          "byte_size": 28,
+          "class_id": 2,
+          "created_at": "2026-10-27T05:34:12.540402Z",
+          "id": 2,
+          "original_filename": "B 班-学习指南.md",
+          "title": "B 班-学习指南.md"
+        }
+      ],
+      "method": "GET",
+      "name": "own-class-list:student_b1",
+      "path": "/api/materials?class_id=999\u0026role=teacher",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "158",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "class_id": 1,
+        "class_name": "A 班",
+        "csrf_token": "[REDACTED]",
+        "id": 3,
+        "must_change_password": false,
+        "role": "student",
+        "username": "student_a1"
+      },
+      "method": "GET",
+      "name": "forged-personal-identity",
+      "path": "/api/me?user_id=2\u0026role=teacher\u0026class_id=2",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "193",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "body_text": "CLASS_A_ONLY：课程导论\n",
+        "byte_size": 28,
+        "class_id": 1,
+        "created_at": "2026-10-27T05:34:12.532601Z",
+        "id": 1,
+        "knowledge_entry_id": 1,
+        "original_filename": "A 班-课程导论.txt",
+        "title": "A 班-课程导论.txt"
+      },
+      "method": "GET",
+      "name": "same-class-detail:teacher_a",
+      "path": "/api/materials/1",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "225",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "bytes": 28,
+        "sha256": "dbcb42c47e5a48468c1bd35c083157d746fdcf4fd6f868e063b99b98b973241a"
+      },
+      "method": "GET",
+      "name": "same-class-download:teacher_a",
+      "path": "/api/materials/1/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "no-store",
+        "Content-Disposition": "attachment; filename*=utf-8''A%20%E7%8F%AD-%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA.txt",
+        "Content-Length": "28",
+        "Content-Type": "application/octet-stream",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Last-Modified": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:teacher_a",
+      "path": "/api/materials/2",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:teacher_a",
+      "path": "/api/materials/999999999",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:teacher_a",
+      "path": "/api/materials/2/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:teacher_a",
+      "path": "/api/materials/999999999/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "body_text": "CLASS_A_ONLY：课程导论\n",
+        "class_id": 1,
+        "id": 1,
+        "material_id": 1
+      },
+      "method": "GET",
+      "name": "own-knowledge:teacher_a",
+      "path": "/api/knowledge-entries/1",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "82",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "body_text": "CLASS_B_ONLY：学习指南\n",
+        "byte_size": 28,
+        "class_id": 2,
+        "created_at": "2026-10-27T05:34:12.540402Z",
+        "id": 2,
+        "knowledge_entry_id": 2,
+        "original_filename": "B 班-学习指南.md",
+        "title": "B 班-学习指南.md"
+      },
+      "method": "GET",
+      "name": "same-class-detail:teacher_b",
+      "path": "/api/materials/2",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "223",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "bytes": 28,
+        "sha256": "9ca02ae8ee0dfbb294793cdf573f33a29f0664ca31719bcad26a09289d2583d9"
+      },
+      "method": "GET",
+      "name": "same-class-download:teacher_b",
+      "path": "/api/materials/2/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "no-store",
+        "Content-Disposition": "attachment; filename*=utf-8''B%20%E7%8F%AD-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97.md",
+        "Content-Length": "28",
+        "Content-Type": "application/octet-stream",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Last-Modified": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:teacher_b",
+      "path": "/api/materials/1",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:teacher_b",
+      "path": "/api/materials/999999999",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:teacher_b",
+      "path": "/api/materials/1/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:teacher_b",
+      "path": "/api/materials/999999999/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "body_text": "CLASS_B_ONLY：学习指南\n",
+        "class_id": 2,
+        "id": 2,
+        "material_id": 2
+      },
+      "method": "GET",
+      "name": "own-knowledge:teacher_b",
+      "path": "/api/knowledge-entries/2",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "82",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "body_text": "CLASS_A_ONLY：课程导论\n",
+        "byte_size": 28,
+        "class_id": 1,
+        "created_at": "2026-10-27T05:34:12.532601Z",
+        "id": 1,
+        "knowledge_entry_id": 1,
+        "original_filename": "A 班-课程导论.txt",
+        "title": "A 班-课程导论.txt"
+      },
+      "method": "GET",
+      "name": "same-class-detail:student_a1",
+      "path": "/api/materials/1",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "225",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "bytes": 28,
+        "sha256": "dbcb42c47e5a48468c1bd35c083157d746fdcf4fd6f868e063b99b98b973241a"
+      },
+      "method": "GET",
+      "name": "same-class-download:student_a1",
+      "path": "/api/materials/1/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "no-store",
+        "Content-Disposition": "attachment; filename*=utf-8''A%20%E7%8F%AD-%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA.txt",
+        "Content-Length": "28",
+        "Content-Type": "application/octet-stream",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Last-Modified": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:student_a1",
+      "path": "/api/materials/2",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:student_a1",
+      "path": "/api/materials/999999999",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:student_a1",
+      "path": "/api/materials/2/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:student_a1",
+      "path": "/api/materials/999999999/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "body_text": "CLASS_A_ONLY：课程导论\n",
+        "class_id": 1,
+        "id": 1,
+        "material_id": 1
+      },
+      "method": "GET",
+      "name": "own-knowledge:student_a1",
+      "path": "/api/knowledge-entries/1",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "82",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "body_text": "CLASS_B_ONLY：学习指南\n",
+        "byte_size": 28,
+        "class_id": 2,
+        "created_at": "2026-10-27T05:34:12.540402Z",
+        "id": 2,
+        "knowledge_entry_id": 2,
+        "original_filename": "B 班-学习指南.md",
+        "title": "B 班-学习指南.md"
+      },
+      "method": "GET",
+      "name": "same-class-detail:student_b1",
+      "path": "/api/materials/2",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "223",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "bytes": 28,
+        "sha256": "9ca02ae8ee0dfbb294793cdf573f33a29f0664ca31719bcad26a09289d2583d9"
+      },
+      "method": "GET",
+      "name": "same-class-download:student_b1",
+      "path": "/api/materials/2/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "no-store",
+        "Content-Disposition": "attachment; filename*=utf-8''B%20%E7%8F%AD-%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97.md",
+        "Content-Length": "28",
+        "Content-Type": "application/octet-stream",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Last-Modified": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:student_b1",
+      "path": "/api/materials/1",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:student_b1",
+      "path": "/api/materials/999999999",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "cross-class:student_b1",
+      "path": "/api/materials/1/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "missing-id:student_b1",
+      "path": "/api/materials/999999999/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "body_text": "CLASS_B_ONLY：学习指南\n",
+        "class_id": 2,
+        "id": 2,
+        "material_id": 2
+      },
+      "method": "GET",
+      "name": "own-knowledge:student_b1",
+      "path": "/api/knowledge-entries/2",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "82",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "学生无上传权限"
+      },
+      "method": "POST",
+      "name": "student-forged-role",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=a646b32bf1368c09a80709602c5c93f7f33b6ad5f617c5d0d29ce0e1afd7",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": {
+          "class_id": "2",
+          "role": "teacher"
+        },
+        "file_bytes": 6,
+        "filename": "denied.txt"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "34",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "error": "请求校验失败"
+      },
+      "method": "POST",
+      "name": "teacher-missing-csrf",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=265f38bc929dd994f3c0208361f491810ac0872495daf2fc888973e9f3f2",
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "request_payload": {
+        "fields": null,
+        "file_bytes": 6,
+        "filename": "denied.txt"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "31",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "error": "仅支持 txt/md 文件"
+      },
+      "method": "POST",
+      "name": "rejected:bad.pdf",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=cc340e6e63a45844642ecae314ba2b9a1a2ce1b6e6cd7dcec41b1019ec88",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": null,
+        "file_bytes": 3,
+        "filename": "bad.pdf"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "36",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "error": "仅支持 txt/md 文件"
+      },
+      "method": "POST",
+      "name": "rejected:bad.docx",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=968b5c71385ad20d3dc3c910e6f4c8ae41e41094fecaea553e07266d9bef",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": null,
+        "file_bytes": 4,
+        "filename": "bad.docx"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "36",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "error": "仅支持 txt/md 文件"
+      },
+      "method": "POST",
+      "name": "rejected:bad.png",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=0b53eb028e6e3df16eb76effa645e4c4aceaf47472028cf6882739da4e03",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": null,
+        "file_bytes": 3,
+        "filename": "bad.png"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "36",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "error": "文件正文不能为空"
+      },
+      "method": "POST",
+      "name": "rejected:empty.txt",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=6e33f9f02d4750109a072dbf106f17262402bdc6ec2d994d1d2577e6aa14",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": null,
+        "file_bytes": 0,
+        "filename": "empty.txt"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "37",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "error": "文件必须为 UTF-8"
+      },
+      "method": "POST",
+      "name": "rejected:bad.txt",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=8884d5fd1d7cca6980fc24a7156c16b7aaf727387b19d053c95da4de1739",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": null,
+        "file_bytes": 1,
+        "filename": "bad.txt"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "34",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "error": "文件超过 5 MiB"
+      },
+      "method": "POST",
+      "name": "rejected:large.txt",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=71fb8db12baa68398554bb5bd1bca50e3b5fae0e57213df3073fdcba89f2",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": null,
+        "file_bytes": 5242881,
+        "filename": "large.txt"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "31",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "knowledge_entry_id": 3,
+        "material_id": 3
+      },
+      "method": "POST",
+      "name": "teacher-upload:lecture.txt",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=efda4ca8c469605f5cfee2fad5545d3f5caee7f479851fbc34c8f5da8e2f",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": {
+          "class_id": "2",
+          "title": "最终验收资料"
+        },
+        "file_bytes": 28,
+        "filename": "lecture.txt"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "41",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 201
+    },
+    {
+      "body": {
+        "body_text": "课堂最终验收材料\n",
+        "byte_size": 28,
+        "class_id": 1,
+        "created_at": "2026-10-27T05:34:12.959267Z",
+        "id": 3,
+        "knowledge_entry_id": 3,
+        "original_filename": "lecture.txt",
+        "title": "最终验收资料"
+      },
+      "method": "GET",
+      "name": "student-sees-upload",
+      "path": "/api/materials/3",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "207",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "bytes": 28,
+        "sha256": "f05aab9fd116622636a5b4c33ae82886377de2fa5de77ae6f32138b27352f0ec"
+      },
+      "method": "GET",
+      "name": "uploaded-original-bytes",
+      "path": "/api/materials/3/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "no-store",
+        "Content-Disposition": "attachment; filename=lecture.txt",
+        "Content-Length": "28",
+        "Content-Type": "application/octet-stream",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Last-Modified": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "other-class-upload-denied",
+      "path": "/api/materials/3",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "other-class-knowledge-denied",
+      "path": "/api/knowledge-entries/3",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "knowledge_entry_id": 4,
+        "material_id": 4
+      },
+      "method": "POST",
+      "name": "teacher-upload:lecture.md",
+      "path": "/api/materials/upload",
+      "request_headers": {
+        "Content-Type": "multipart/form-data; boundary=221e80cf1cbbafa79a4ec0e882c9b97d08daf96bc083bee1ff22f5ec2ec9",
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "request_payload": {
+        "fields": {
+          "class_id": "2",
+          "title": "最终验收资料"
+        },
+        "file_bytes": 28,
+        "filename": "lecture.md"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "41",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 201
+    },
+    {
+      "body": {
+        "body_text": "课堂最终验收材料\n",
+        "byte_size": 28,
+        "class_id": 1,
+        "created_at": "2026-10-27T05:34:12.981285Z",
+        "id": 4,
+        "knowledge_entry_id": 4,
+        "original_filename": "lecture.md",
+        "title": "最终验收资料"
+      },
+      "method": "GET",
+      "name": "student-sees-upload",
+      "path": "/api/materials/4",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "206",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "bytes": 28,
+        "sha256": "f05aab9fd116622636a5b4c33ae82886377de2fa5de77ae6f32138b27352f0ec"
+      },
+      "method": "GET",
+      "name": "uploaded-original-bytes",
+      "path": "/api/materials/4/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "no-store",
+        "Content-Disposition": "attachment; filename=lecture.md",
+        "Content-Length": "28",
+        "Content-Type": "application/octet-stream",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "Last-Modified": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "other-class-upload-denied",
+      "path": "/api/materials/4",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "error": "资源不存在"
+      },
+      "method": "GET",
+      "name": "other-class-knowledge-denied",
+      "path": "/api/knowledge-entries/4",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "28",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "bytes": 19,
+        "sha256": "b16e15764b8bc06c5c3f9f19bc8b99fa48e7894aa5a6ccdad65da49bbf564793"
+      },
+      "method": "GET",
+      "name": "public-storage-denied",
+      "path": "/uploads/1/guessed.txt",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "19",
+        "Content-Type": "text/plain; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "status": "ok"
+      },
+      "method": "GET",
+      "name": "health-no-cookie",
+      "path": "/health",
+      "request_headers": {},
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "16",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "bytes": 28,
+        "sha256": "f05aab9fd116622636a5b4c33ae82886377de2fa5de77ae6f32138b27352f0ec"
+      },
+      "method": "GET",
+      "name": "handler-restart-preserves-session",
+      "path": "/api/materials/4/file",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "no-store",
+        "Content-Disposition": "attachment; filename=lecture.md",
+        "Content-Length": "28",
+        "Content-Type": "application/octet-stream",
+        "Date": "Tue, 27 Oct 2026 05:34:13 GMT",
+        "Last-Modified": "Tue, 27 Oct 2026 05:34:12 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "ok": true
+      },
+      "method": "POST",
+      "name": "logout",
+      "path": "/api/logout",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]",
+        "X-CSRF-Token": "[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "12",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:13 GMT",
+        "Set-Cookie": "[REDACTED]c[REDACTED]a[REDACTED]m[REDACTED]p[REDACTED]u[REDACTED]s[REDACTED]c[REDACTED]l[REDACTED]a[REDACTED]w[REDACTED]_[REDACTED]s[REDACTED]e[REDACTED]s[REDACTED]s[REDACTED]i[REDACTED]o[REDACTED]n[REDACTED]=[REDACTED];[REDACTED] [REDACTED]P[REDACTED]a[REDACTED]t[REDACTED]h[REDACTED]=[REDACTED]/[REDACTED];[REDACTED] [REDACTED]M[REDACTED]a[REDACTED]x[REDACTED]-[REDACTED]A[REDACTED]g[REDACTED]e[REDACTED]=[REDACTED]0[REDACTED];[REDACTED] [REDACTED]H[REDACTED]t[REDACTED]t[REDACTED]p[REDACTED]O[REDACTED]n[REDACTED]l[REDACTED]y[REDACTED];[REDACTED] [REDACTED]S[REDACTED]a[REDACTED]m[REDACTED]e[REDACTED]S[REDACTED]i[REDACTED]t[REDACTED]e[REDACTED]=[REDACTED]L[REDACTED]a[REDACTED]x[REDACTED]",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "error": "请先登录"
+      },
+      "method": "GET",
+      "name": "logout-replay-denied",
+      "path": "/api/me",
+      "request_headers": {
+        "Cookie": "campusclaw_session=[REDACTED]"
+      },
+      "response_headers": {
+        "Cache-Control": "no-store",
+        "Content-Length": "25",
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Tue, 27 Oct 2026 05:34:13 GMT",
+        "X-Content-Type-Options": "nosniff"
+      },
+      "status": 401
+    }
+  ],
+  "count": 73,
+  "date": "2026-10-27",
+  "executed_at": "2026-10-27T05:34:13Z",
+  "passed": true,
+  "transport": "Real Go HTTP server and actual MySQL; unique test DB and temporary files. Nginx checked separately."
+}

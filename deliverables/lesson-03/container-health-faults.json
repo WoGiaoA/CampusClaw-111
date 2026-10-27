@@ -1,0 +1,18 @@
+[
+  {
+    "Fault": "upload permissions",
+    "HTTP": 503,
+    "Body": {
+      "status": "unavailable"
+    },
+    "ContainerHealth": "unhealthy"
+  },
+  {
+    "Fault": "database stopped",
+    "HTTP": 503,
+    "Body": {
+      "status": "unavailable"
+    },
+    "ContainerHealth": "unhealthy"
+  }
+]

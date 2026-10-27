@@ -1,0 +1,106 @@
+{
+  "changeName": "add-traceable-vector-retrieval",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "D:\\PKU\\Projects\\campusclaw-111",
+    "changesDir": "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\proposal.md",
+      "existingOutputPaths": [
+        "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\specs\\knowledge-retrieval\\spec.md",
+        "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\specs\\project-runtime\\spec.md",
+        "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\specs\\teaching-materials\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\design.md",
+      "existingOutputPaths": [
+        "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\tasks.md",
+      "existingOutputPaths": [
+        "D:\\PKU\\Projects\\campusclaw-111\\openspec\\changes\\add-traceable-vector-retrieval\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"add-traceable-vector-retrieval\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "D:\\PKU\\Projects\\campusclaw-111"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "D:\\PKU\\Projects\\campusclaw-111",
+    "source": "nearest"
+  }
+}

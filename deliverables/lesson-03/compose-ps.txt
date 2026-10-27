@@ -1,0 +1,4 @@
+NAME               IMAGE                                                                     COMMAND                  SERVICE   CREATED          STATUS                   PORTS
+campusclaw-api-1   sha256:e4b0d736400ed196d3b01df2a4653ef9554ca8a31d5637c252879d8ce35c0674   "campusclaw"             api       19 minutes ago   Up 8 minutes (healthy)   8080/tcp
+campusclaw-db-1    public.ecr.aws/docker/library/mysql:8.4                                   "docker-entrypoint.s…"   db        25 minutes ago   Up 8 minutes (healthy)   3306/tcp, 33060/tcp
+campusclaw-web-1   public.ecr.aws/docker/library/nginx:1.28-alpine                           "/docker-entrypoint.…"   web       19 minutes ago   Up 8 minutes (healthy)   127.0.0.1:8080->80/tcp

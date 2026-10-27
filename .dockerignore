@@ -1,0 +1,9 @@
+.git
+.agents
+.claude
+.local
+.env
+data
+uploads
+*.exe
+docs/history

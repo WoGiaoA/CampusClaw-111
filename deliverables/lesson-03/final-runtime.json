@@ -1,0 +1,254 @@
+{
+  "client_date": "2026-10-27",
+  "utc_time": "2026-10-27T05:29:51.270Z",
+  "scope": "existing public Nginx; anonymous and read-only; no service restart or credential changes",
+  "checks": [
+    {
+      "name": "health",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "16",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "name": "identity anonymous",
+      "method": "GET",
+      "path": "/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "materials anonymous",
+      "method": "GET",
+      "path": "/api/materials",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "detail anonymous",
+      "method": "GET",
+      "path": "/api/materials/1",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "download anonymous",
+      "method": "GET",
+      "path": "/api/materials/1/file",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "knowledge anonymous",
+      "method": "GET",
+      "path": "/api/knowledge-entries",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "storage blocked",
+      "method": "GET",
+      "path": "/uploads/1/guessed.md",
+      "status": 404,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "153",
+        "content-type": "text/html",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 153
+      }
+    },
+    {
+      "name": "login shell",
+      "method": "GET",
+      "path": "/login",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "2051",
+        "content-type": "text/html",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "etag": "\"6adf8d16-803\"",
+        "last-modified": "Mon, 26 Oct 2026 17:25:42 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 2051
+      }
+    },
+    {
+      "name": "register shell",
+      "method": "GET",
+      "path": "/register",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "2051",
+        "content-type": "text/html",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "etag": "\"6adf8d16-803\"",
+        "last-modified": "Mon, 26 Oct 2026 17:25:42 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 2051
+      }
+    },
+    {
+      "name": "profile shell",
+      "method": "GET",
+      "path": "/profile",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "2051",
+        "content-type": "text/html",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "etag": "\"6adf8d16-803\"",
+        "last-modified": "Mon, 26 Oct 2026 17:25:42 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 2051
+      }
+    },
+    {
+      "name": "materials shell",
+      "method": "GET",
+      "path": "/materials",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "2051",
+        "content-type": "text/html",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "etag": "\"6adf8d16-803\"",
+        "last-modified": "Mon, 26 Oct 2026 17:25:42 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 2051
+      }
+    },
+    {
+      "name": "malformed login",
+      "method": "POST",
+      "path": "/api/login",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "46",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 27 Oct 2026 05:29:50 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请求字段或 JSON 格式无效"
+      }
+    }
+  ],
+  "services": [
+    {
+      "service": "api",
+      "state": "running",
+      "health": "healthy",
+      "ports": "8080/tcp"
+    },
+    {
+      "service": "db",
+      "state": "running",
+      "health": "healthy",
+      "ports": "3306/tcp, 33060/tcp"
+    },
+    {
+      "service": "web",
+      "state": "running",
+      "health": "healthy",
+      "ports": "127.0.0.1:8080->80/tcp"
+    }
+  ],
+  "nginx": {
+    "exit_code": 0,
+    "output": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful\n"
+  }
+}

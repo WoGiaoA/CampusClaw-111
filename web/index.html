@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CampusClaw · 班级教学空间</title>
+  <link rel="stylesheet" href="/style.css?v=20261027-header68">
+  <script defer src="/app.js?v=20261027-header68"></script>
+</head>
+<body>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="/materials" aria-label="CampusClaw 班级教学空间"><span class="seal" aria-hidden="true">CC</span><span class="brand-name">CampusClaw<small>班级教学空间 · PEKING UNIVERSITY</small></span></a>
+    <div id="identity"></div>
+  </div></header>
+  <main id="app"><p class="page-loading" role="status">正在连接班级空间…</p></main>
+  <template id="login-template">
+    <section class="login-layout">
+      <div class="intro"><p class="eyebrow">CampusClaw · 校园教学</p><h1>让教学材料，<br>回到班级空间。</h1><p class="intro-description">教师上传讲义，学生随时查看与下载。<br>每一份材料，都有清晰的班级边界。</p><p class="intro-note">一个班级，一处共享的学习空间。</p></div>
+      <section class="card login-card" aria-labelledby="login-title">
+        <div class="auth-heading"><h2 id="login-title">登录 CampusClaw</h2><p class="muted">使用教师或学生账号进入本班</p></div>
+        <form id="login-form">
+          <label>账号<input name="username" autocomplete="username" required placeholder="请输入账号" aria-describedby="login-error"></label>
+          <label>密码<input name="password" type="password" autocomplete="current-password" required placeholder="请输入密码" aria-describedby="login-error"></label>
+          <p id="login-error" class="feedback" role="alert" hidden></p>
+          <button class="primary full-width" type="submit">进入班级空间</button>
+        </form>
+        <p class="account-note" id="account-note">正在检查注册方式…</p>
+      </section>
+    </section>
+  </template>
+</body>
+</html>

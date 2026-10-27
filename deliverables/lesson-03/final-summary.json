@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-27",
+  "go": {
+    "passed": 17,
+    "skipped": 0,
+    "failed": 0,
+    "real_mysql_integration": 11
+  },
+  "recorded_http": {
+    "passed": 73,
+    "scope": "Real Go HTTP server and actual MySQL; unique test DB and temporary files. Nginx checked separately."
+  },
+  "frontend": {
+    "passed": 15,
+    "failed": 0,
+    "mode": "DOM/VM with mocked fetch"
+  },
+  "public_http": {
+    "passed": 12
+  },
+  "nginx_test_exit": 0,
+  "go_vet": "passed",
+  "api_build": "passed",
+  "javascript_syntax": "passed",
+  "scenario_rows": 56,
+  "container_restart_this_round": false,
+  "real_credentials_reset_this_round": false,
+  "history_persistence": "2026-10-13 campusclaw-acceptance",
+  "manual_screenshots": "user pending",
+  "openspec": {
+    "main_specs_passed": 4,
+    "active_changes": 0,
+    "archived": [
+      {
+        "name": "add-auth-rbac-class-knowledge",
+        "completed": 29,
+        "total": 29,
+        "archive": "openspec/changes/archive/2026-10-27-add-auth-rbac-class-knowledge"
+      },
+      {
+        "name": "add-demo-registration-password-management",
+        "completed": 7,
+        "total": 7,
+        "archive": "openspec/changes/archive/2026-10-27-add-demo-registration-password-management"
+      }
+    ]
+  }
+}

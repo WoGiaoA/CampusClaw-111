@@ -1,0 +1,23 @@
+✔ student sees own material/download and no upload form; title escaped (235.4359ms)
+✔ teacher receives upload form and me-derived identity (59.2725ms)
+✔ login is JSON POST, ordinary account/password form, no account picker (72.5257ms)
+✔ first-login material page navigates to profile before fetching business data (13.7109ms)
+✔ registration posts only username/class code and displays local initial password (46.5925ms)
+✔ profile shows trusted identity, first change hides current password, normal requires it (65.2783ms)
+✔ production login hides registration and production register page refuses form (60.0822ms)
+✔ anonymous API 401 navigates material page to login before rendering data (14.0475ms)
+✔ gateway HTML and network failures produce readable messages without exposing HTML (16.7045ms)
+✔ committed upload followed by list failure stays successful and can refresh without reupload (93.3728ms)
+✔ successful login preserves ordinary and first-change navigation and clears submitted password (107.8816ms)
+✔ file selection is safe text; upload keeps multipart, CSRF, busy state and resets selection (62.2358ms)
+✔ refresh shows busy state, restores control and presents empty state without changing permissions (78.9595ms)
+✔ view body uses protected detail URL, escapes content and removes closed dialog (79.575ms)
+✔ profile password form retains exact protocol and CSRF while displaying server validation (45.5843ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33151.2867

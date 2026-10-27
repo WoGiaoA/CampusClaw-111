@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "id": "add-auth-rbac-class-knowledge",
+      "type": "change",
+      "valid": true,
+      "issues": [],
+      "durationMs": 81
+    },
+    {
+      "id": "add-demo-registration-password-management",
+      "type": "change",
+      "valid": true,
+      "issues": [],
+      "durationMs": 55
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 2,
+      "passed": 2,
+      "failed": 0
+    },
+    "byType": {
+      "change": {
+        "items": 2,
+        "passed": 2,
+        "failed": 0
+      },
+      "spec": {
+        "items": 0,
+        "passed": 0,
+        "failed": 0
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "D:\\PKU\\Projects\\campusclaw-111",
+    "source": "nearest"
+  }
+}

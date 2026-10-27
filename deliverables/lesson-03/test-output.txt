@@ -1,0 +1,82 @@
+?   	campusclaw/cmd/api	[no test files]
+?   	campusclaw/cmd/devweb	[no test files]
+=== RUN   TestMySQLSchemaSeeds
+    integration_test.go:218: nine tables, real MySQL constraints, salted hashes, seed idempotence: PASS
+--- PASS: TestMySQLSchemaSeeds (1.60s)
+=== RUN   TestMySQLAuthSessions
+2026/10/13 01:00:30 security event: wrong password
+2026/10/13 01:00:30 security event: unknown account
+2026/10/13 01:00:30 security event: wrong password
+2026/10/13 01:00:30 security event: wrong password
+2026/10/13 01:00:30 security event: wrong password
+2026/10/13 01:00:30 security event: wrong password
+2026/10/13 01:00:30 security event: wrong password
+2026/10/13 01:00:31 security event: wrong password
+2026/10/13 01:00:31 security event: wrong password
+2026/10/13 01:00:31 security event: wrong password
+2026/10/13 01:00:31 security event: login rate limit
+2026/10/13 01:00:31 security event: login rate limit
+2026/10/13 01:00:31 security event: login rate limit
+    integration_test.go:309: four logins, uniform failures/rate limit, rotation/revocation/expiry, DB roles, anonymous denial: PASS
+--- PASS: TestMySQLAuthSessions (3.57s)
+=== RUN   TestMySQLIsolationDownload
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class knowledge denied
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class knowledge denied
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class knowledge denied
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class material denied
+2026/10/13 01:00:33 security event: cross-class knowledge denied
+    integration_test.go:358: A/B teacher/student lists and download, cross/missing 404, anonymous 401, no public files: PASS
+--- PASS: TestMySQLIsolationDownload (2.02s)
+=== RUN   TestMySQLUploadRollbackRecovery
+    integration_test.go:461: txt/md 201, UTF8/BOM, same names, 400/413, 403 unchanged, file/DB/commit rollback, startup recovery: PASS
+--- PASS: TestMySQLUploadRollbackRecovery (1.70s)
+=== RUN   TestMySQLHealthAndMissingSeed
+    integration_test.go:504: missing seed secret leaves no users; health unauthenticated 200, actual DB/storage fault 503: PASS
+--- PASS: TestMySQLHealthAndMissingSeed (1.90s)
+=== RUN   TestValidateText
+=== RUN   TestValidateText/a.txt
+=== RUN   TestValidateText/a.MD
+=== RUN   TestValidateText/a.pdf
+=== RUN   TestValidateText/a.docx
+=== RUN   TestValidateText/a.png
+=== RUN   TestValidateText/a.txt#01
+=== RUN   TestValidateText/a.md
+=== RUN   TestValidateText/a.txt#02
+=== RUN   TestValidateText/a.txt#03
+--- PASS: TestValidateText (0.00s)
+    --- PASS: TestValidateText/a.txt (0.00s)
+    --- PASS: TestValidateText/a.MD (0.00s)
+    --- PASS: TestValidateText/a.pdf (0.00s)
+    --- PASS: TestValidateText/a.docx (0.00s)
+    --- PASS: TestValidateText/a.png (0.00s)
+    --- PASS: TestValidateText/a.txt#01 (0.00s)
+    --- PASS: TestValidateText/a.md (0.00s)
+    --- PASS: TestValidateText/a.txt#02 (0.00s)
+    --- PASS: TestValidateText/a.txt#03 (0.00s)
+=== RUN   TestConfigAndSecrets
+--- PASS: TestConfigAndSecrets (0.11s)
+=== RUN   TestStorageConfinedAndRollback
+--- PASS: TestStorageConfinedAndRollback (0.12s)
+=== RUN   TestCSRF
+--- PASS: TestCSRF (0.00s)
+PASS
+ok  	campusclaw/internal/campus	13.454s
+✔ student sees own material/download and no upload form; title escaped (199.2936ms)
+✔ teacher receives upload form and me-derived identity (54.2017ms)
+✔ login is JSON POST, ordinary account/password form, no account picker (21.7973ms)
+✔ anonymous API 401 navigates material page to login before rendering data (16.1345ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1627.7775

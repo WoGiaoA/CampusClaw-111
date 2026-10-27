@@ -1,0 +1,449 @@
+{
+  "timestamp": "2026-10-12T17:00:40.688Z",
+  "base": "http://127.0.0.1:8080",
+  "transport": "Local Go development proxy (NOT Docker/Nginx)",
+  "checks": [
+    {
+      "name": "/login",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "content-length": "1682",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:40 GMT",
+        "last-modified": "Mon, 12 Oct 2026 16:26:59 GMT"
+      },
+      "body": "[HTML page shell; no business data]"
+    },
+    {
+      "name": "/materials",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "content-length": "1682",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:40 GMT",
+        "last-modified": "Mon, 12 Oct 2026 16:26:59 GMT"
+      },
+      "body": "[HTML page shell; no business data]"
+    },
+    {
+      "name": "/health",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "16",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:40 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "name": "login:teacher_a:failure",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:40 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "content_type": "application/json",
+        "payload": {
+          "username": "teacher_a",
+          "password": "[REDACTED]"
+        }
+      }
+    },
+    {
+      "name": "login:unknown_account:failure",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:40 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "content_type": "application/json",
+        "payload": {
+          "username": "unknown_account",
+          "password": "[REDACTED]"
+        }
+      }
+    },
+    {
+      "name": "login:teacher_a",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "83",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "id": 1,
+        "username": "teacher_a",
+        "role": "teacher",
+        "class_id": 1,
+        "class_name": "A 班"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "content_type": "application/json",
+        "payload": {
+          "username": "teacher_a",
+          "password": "[REDACTED]"
+        }
+      }
+    },
+    {
+      "name": "login:student_a1",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "84",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "id": 3,
+        "username": "student_a1",
+        "role": "student",
+        "class_id": 1,
+        "class_name": "A 班"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "content_type": "application/json",
+        "payload": {
+          "username": "student_a1",
+          "password": "[REDACTED]"
+        }
+      }
+    },
+    {
+      "name": "login:student_b1",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "84",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "id": 4,
+        "username": "student_b1",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "content_type": "application/json",
+        "payload": {
+          "username": "student_b1",
+          "password": "[REDACTED]"
+        }
+      }
+    },
+    {
+      "name": "/api/materials",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "456",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": [
+        {
+          "id": 4,
+          "class_id": 1,
+          "title": "lesson03-http.txt",
+          "original_filename": "lesson03-http.txt",
+          "byte_size": 28,
+          "created_at": "2026-10-12T16:54:43.130683Z"
+        },
+        {
+          "id": 3,
+          "class_id": 1,
+          "title": "lesson03-http.txt",
+          "original_filename": "lesson03-http.txt",
+          "byte_size": 28,
+          "created_at": "2026-10-12T16:44:45.705541Z"
+        },
+        {
+          "id": 1,
+          "class_id": 1,
+          "title": "A 班-课程导论.txt",
+          "original_filename": "A 班-课程导论.txt",
+          "byte_size": 28,
+          "created_at": "2026-10-12T16:44:09.192673Z"
+        }
+      ]
+    },
+    {
+      "name": "/api/materials",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "158",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": [
+        {
+          "id": 2,
+          "class_id": 2,
+          "title": "B 班-学习指南.md",
+          "original_filename": "B 班-学习指南.md",
+          "byte_size": 28,
+          "created_at": "2026-10-12T16:44:09.200861Z"
+        }
+      ]
+    },
+    {
+      "name": "download:anonymous",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "download:student-own",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "content-disposition": "attachment; filename=lesson03-http.txt",
+        "content-length": "28",
+        "content-type": "application/octet-stream",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "last-modified": "Mon, 12 Oct 2026 16:54:43 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": "第三课 HTTP 验收材料\n"
+    },
+    {
+      "name": "download:cross-class",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "28",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "资源不存在"
+      }
+    },
+    {
+      "name": "download:missing-id",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "28",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "资源不存在"
+      }
+    },
+    {
+      "name": "download:public-path",
+      "status": 404,
+      "headers": {
+        "content-length": "19",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": "404 page not found\n"
+    },
+    {
+      "name": "/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "163",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "id": 1,
+        "username": "teacher_a",
+        "role": "teacher",
+        "class_id": 1,
+        "class_name": "A 班",
+        "csrf_token": "[REDACTED]"
+      }
+    },
+    {
+      "name": "/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "164",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "id": 3,
+        "username": "student_a1",
+        "role": "student",
+        "class_id": 1,
+        "class_name": "A 班",
+        "csrf_token": "[REDACTED]"
+      }
+    },
+    {
+      "name": "upload:student",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "学生无上传权限"
+      }
+    },
+    {
+      "name": "upload:teacher",
+      "status": 201,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "41",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "knowledge_entry_id": 5,
+        "material_id": 5
+      }
+    },
+    {
+      "name": "upload:visible-to-own-student",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "215",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "id": 5,
+        "class_id": 1,
+        "title": "lesson03-http.txt",
+        "original_filename": "lesson03-http.txt",
+        "byte_size": 28,
+        "created_at": "2026-10-12T17:00:41.377073Z",
+        "body_text": "第三课 HTTP 验收材料\n",
+        "knowledge_entry_id": 5
+      }
+    },
+    {
+      "name": "upload:knowledge-record",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "82",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "id": 5,
+        "material_id": 5,
+        "class_id": 1,
+        "body_text": "第三课 HTTP 验收材料\n"
+      }
+    },
+    {
+      "name": "upload:pdf-rejected",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "36",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "仅支持 txt/md 文件"
+      }
+    },
+    {
+      "name": "logout",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "12",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "ok": true
+      }
+    },
+    {
+      "name": "logout:old-cookie-replay",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Mon, 12 Oct 2026 17:00:41 GMT",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    }
+  ]
+}

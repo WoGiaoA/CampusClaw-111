@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "origin": "http://127.0.0.1:18080",
+      "status": 201,
+      "body": {
+        "must_change_password": true,
+        "ok": true
+      }
+    },
+    {
+      "origin": "http://foreign.invalid",
+      "status": 403,
+      "body": {
+        "error": "请求来源无效"
+      }
+    }
+  ]
+}

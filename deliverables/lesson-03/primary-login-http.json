@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "unchanged_personal_password_account": "teacher_a",
+  "checks": [
+    {
+      "name": "teacher_b",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "111",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:16:11 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 2,
+        "username": "teacher_b",
+        "role": "teacher",
+        "class_id": 2,
+        "class_name": "B 班"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "password": "[REDACTED]"
+      }
+    },
+    {
+      "name": "student_a1",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "112",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:16:11 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 3,
+        "username": "student_a1",
+        "role": "student",
+        "class_id": 1,
+        "class_name": "A 班"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "password": "[REDACTED]"
+      }
+    },
+    {
+      "name": "student_b1",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "112",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:16:11 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 4,
+        "username": "student_b1",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      },
+      "request": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8080/api/login",
+        "password": "[REDACTED]"
+      }
+    }
+  ]
+}

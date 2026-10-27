@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "id": "account-password-management",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 16
+    },
+    {
+      "id": "class-access",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 5
+    },
+    {
+      "id": "project-runtime",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 2
+    },
+    {
+      "id": "teaching-materials",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 1
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "byType": {
+      "change": {
+        "items": 0,
+        "passed": 0,
+        "failed": 0
+      },
+      "spec": {
+        "items": 4,
+        "passed": 4,
+        "failed": 0
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "D:\\PKU\\Projects\\campusclaw-111",
+    "source": "nearest"
+  }
+}

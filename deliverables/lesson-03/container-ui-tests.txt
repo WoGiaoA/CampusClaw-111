@@ -1,0 +1,16 @@
+✔ student sees own material/download and no upload form; title escaped (243.4535ms)
+✔ teacher receives upload form and me-derived identity (60.4563ms)
+✔ login is JSON POST, ordinary account/password form, no account picker (47.1394ms)
+✔ first-login material page navigates to profile before fetching business data (28.6963ms)
+✔ registration posts only username/class code and displays local initial password (61.1972ms)
+✔ profile shows trusted identity, first change hides current password, normal requires it (79.2248ms)
+✔ production login hides registration and production register page refuses form (78.0086ms)
+✔ anonymous API 401 navigates material page to login before rendering data (14.9311ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27870.1129

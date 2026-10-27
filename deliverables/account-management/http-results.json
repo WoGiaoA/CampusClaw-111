@@ -1,0 +1,10 @@
+{
+  "entry": "http://127.0.0.1:8080",
+  "checks": 47,
+  "passed": true,
+  "notes": "Real local HTTP. Passwords, session cookies and CSRF omitted. Preset accounts remain in first-change state.",
+  "temporary_account": "demo_verify_720bc92636",
+  "temporary_account_cleaned": true,
+  "business_snapshot_unchanged": true,
+  "upload_sha256_unchanged": true
+}

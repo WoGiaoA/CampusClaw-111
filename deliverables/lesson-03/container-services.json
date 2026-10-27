@@ -1,0 +1,58 @@
+[
+  {
+    "Name": "/campusclaw-api-1",
+    "Status": "running",
+    "Health": "healthy",
+    "Ports": {
+      "8080/tcp": null
+    },
+    "Volumes": [
+      {
+        "Type": "volume",
+        "Name": "campusclaw_uploads",
+        "Destination": "/uploads"
+      }
+    ]
+  },
+  {
+    "Name": "/campusclaw-db-1",
+    "Status": "running",
+    "Health": "healthy",
+    "Ports": {
+      "3306/tcp": null,
+      "33060/tcp": null
+    },
+    "Volumes": [
+      {
+        "Type": "volume",
+        "Name": "campusclaw_db-data",
+        "Destination": "/var/lib/mysql"
+      }
+    ]
+  },
+  {
+    "Name": "/campusclaw-web-1",
+    "Status": "running",
+    "Health": "healthy",
+    "Ports": {
+      "80/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8080"
+        }
+      ]
+    },
+    "Volumes": [
+      {
+        "Type": "bind",
+        "Name": null,
+        "Destination": "/etc/nginx/conf.d/default.conf"
+      },
+      {
+        "Type": "bind",
+        "Name": null,
+        "Destination": "/usr/share/nginx/html"
+      }
+    ]
+  }
+]

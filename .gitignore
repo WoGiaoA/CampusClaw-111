@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.local/
+data/
+uploads/
+*.exe
+*.test
+coverage.out
+

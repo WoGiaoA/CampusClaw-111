@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-27",
+  "scope": "Planning documents only; no business implementation",
+  "capabilities": [
+    {
+      "capability": "knowledge-retrieval",
+      "requirements": 10,
+      "scenarios": 28
+    },
+    {
+      "capability": "project-runtime",
+      "requirements": 4,
+      "scenarios": 8
+    },
+    {
+      "capability": "teaching-materials",
+      "requirements": 2,
+      "scenarios": 6
+    }
+  ],
+  "implementationTasksTotal": 29,
+  "implementationTasksCompleted": 0,
+  "localLinksChecked": 20,
+  "missingLocalLinks": [],
+  "modifiedRequirements": [
+    {
+      "capability": "teaching-materials",
+      "requirement": "教师文本上传入库",
+      "allOriginalScenarioNamesPreserved": true
+    },
+    {
+      "capability": "project-runtime",
+      "requirement": "Docker Compose 标准部署",
+      "allOriginalScenarioNamesPreserved": true
+    }
+  ],
+  "publicRepository": "Managed by user; no remote operations performed",
+  "planningArtifactsComplete": [
+    "proposal",
+    "specs",
+    "design",
+    "tasks"
+  ],
+  "documentsChecked": 10
+}

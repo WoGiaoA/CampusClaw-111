@@ -1,0 +1,71 @@
+=== RUN   TestFinalCourseworkEvidence
+    acceptance_test.go:297: 73 final coursework HTTP checks passed; cookies, CSRF and passwords redacted
+--- PASS: TestFinalCourseworkEvidence (1.73s)
+=== RUN   TestMySQLSchemaSeeds
+    integration_test.go:218: nine tables, real MySQL constraints, salted hashes, seed idempotence: PASS
+--- PASS: TestMySQLSchemaSeeds (1.90s)
+=== RUN   TestMySQLAuthSessions
+    integration_test.go:309: four logins, uniform failures/rate limit, rotation/revocation/expiry, DB roles, anonymous denial: PASS
+--- PASS: TestMySQLAuthSessions (4.05s)
+=== RUN   TestMySQLIsolationDownload
+    integration_test.go:365: A/B teacher/student lists and download, cross/missing 404, anonymous 401, no public files: PASS
+--- PASS: TestMySQLIsolationDownload (2.40s)
+=== RUN   TestMySQLUploadRollbackRecovery
+    integration_test.go:468: txt/md 201, UTF8/BOM, same names, 400/413, 403 unchanged, file/DB/commit rollback, startup recovery: PASS
+--- PASS: TestMySQLUploadRollbackRecovery (2.01s)
+=== RUN   TestMySQLHealthAndMissingSeed
+    integration_test.go:511: missing seed secret leaves no users; health unauthenticated 200, actual DB/storage fault 503: PASS
+--- PASS: TestMySQLHealthAndMissingSeed (2.30s)
+=== RUN   TestLoginRejectsMalformedJSON
+=== RUN   TestLoginRejectsMalformedJSON/wrong_media
+=== RUN   TestLoginRejectsMalformedJSON/bad_media_parameter
+=== RUN   TestLoginRejectsMalformedJSON/second_value
+=== RUN   TestLoginRejectsMalformedJSON/trailing_garbage
+=== RUN   TestLoginRejectsMalformedJSON/oversized_whitespace
+=== RUN   TestLoginRejectsMalformedJSON/truncated
+--- PASS: TestLoginRejectsMalformedJSON (0.00s)
+    --- PASS: TestLoginRejectsMalformedJSON/wrong_media (0.00s)
+    --- PASS: TestLoginRejectsMalformedJSON/bad_media_parameter (0.00s)
+    --- PASS: TestLoginRejectsMalformedJSON/second_value (0.00s)
+    --- PASS: TestLoginRejectsMalformedJSON/trailing_garbage (0.00s)
+    --- PASS: TestLoginRejectsMalformedJSON/oversized_whitespace (0.00s)
+    --- PASS: TestLoginRejectsMalformedJSON/truncated (0.00s)
+=== RUN   TestAccountJSONMediaType
+--- PASS: TestAccountJSONMediaType (0.00s)
+=== RUN   TestMySQLLoginJSONParameters
+--- PASS: TestMySQLLoginJSONParameters (1.80s)
+=== RUN   TestDemoResetFirstLogin
+--- PASS: TestDemoResetFirstLogin (5.60s)
+=== RUN   TestRegistrationPasswordManagement
+--- PASS: TestRegistrationPasswordManagement (3.83s)
+=== RUN   TestProductionAndIncrementalMigration
+--- PASS: TestProductionAndIncrementalMigration (2.09s)
+=== RUN   TestConcurrentLoginReset
+--- PASS: TestConcurrentLoginReset (2.29s)
+=== RUN   TestValidateText
+=== RUN   TestValidateText/a.txt
+=== RUN   TestValidateText/a.MD
+=== RUN   TestValidateText/a.pdf
+=== RUN   TestValidateText/a.docx
+=== RUN   TestValidateText/a.png
+=== RUN   TestValidateText/a.txt#01
+=== RUN   TestValidateText/a.md
+=== RUN   TestValidateText/a.txt#02
+=== RUN   TestValidateText/a.txt#03
+--- PASS: TestValidateText (0.08s)
+    --- PASS: TestValidateText/a.txt (0.00s)
+    --- PASS: TestValidateText/a.MD (0.00s)
+    --- PASS: TestValidateText/a.pdf (0.00s)
+    --- PASS: TestValidateText/a.docx (0.00s)
+    --- PASS: TestValidateText/a.png (0.00s)
+    --- PASS: TestValidateText/a.txt#01 (0.00s)
+    --- PASS: TestValidateText/a.md (0.00s)
+    --- PASS: TestValidateText/a.txt#02 (0.00s)
+    --- PASS: TestValidateText/a.txt#03 (0.00s)
+=== RUN   TestConfigAndSecrets
+--- PASS: TestConfigAndSecrets (0.11s)
+=== RUN   TestStorageConfinedAndRollback
+--- PASS: TestStorageConfinedAndRollback (0.12s)
+=== RUN   TestCSRF
+--- PASS: TestCSRF (0.00s)
+PASS

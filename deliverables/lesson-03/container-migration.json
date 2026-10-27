@@ -1,0 +1,19 @@
+{
+  "Passed": true,
+  "OriginalUsers": 4,
+  "OriginalMaterials": 6,
+  "OriginalKnowledgeEntries": 6,
+  "OriginalFiles": 6,
+  "UserHashesRolesClassesPreserved": true,
+  "TeacherAPersonalPasswordPreserved": true,
+  "DefaultPasswordFirstLoginAccounts": [
+    "teacher_b",
+    "student_a1",
+    "student_b1"
+  ],
+  "SourceRowDigestsMatch": true,
+  "OriginalFileDigestsMatch": true,
+  "NativeDataPreserved": true,
+  "NativeProcessesStopped": true,
+  "CMDStartStopRestartPassed": true
+}

@@ -1,0 +1,1854 @@
+{
+  "date": "2026-10-13",
+  "transport": "Actual Docker Compose Nginx → Go → MySQL",
+  "entry": "http://127.0.0.1:18080",
+  "phase": "first",
+  "passed": true,
+  "count": 91,
+  "checks": [
+    {
+      "name": "page:/login",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/login",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "1670",
+        "content-type": "text/html",
+        "date": "Tue, 13 Oct 2026 15:13:02 GMT",
+        "etag": "\"6acdf6e1-686\"",
+        "last-modified": "Tue, 13 Oct 2026 09:16:17 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 1670,
+        "sha256": "7b2a0135e1014cec3a96aeaa8911e986df8d9802453facca013e4c7e71c1fad4"
+      }
+    },
+    {
+      "name": "page:/register",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/register",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "1670",
+        "content-type": "text/html",
+        "date": "Tue, 13 Oct 2026 15:13:02 GMT",
+        "etag": "\"6acdf6e1-686\"",
+        "last-modified": "Tue, 13 Oct 2026 09:16:17 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 1670,
+        "sha256": "7b2a0135e1014cec3a96aeaa8911e986df8d9802453facca013e4c7e71c1fad4"
+      }
+    },
+    {
+      "name": "page:/profile",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/profile",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "1670",
+        "content-type": "text/html",
+        "date": "Tue, 13 Oct 2026 15:13:02 GMT",
+        "etag": "\"6acdf6e1-686\"",
+        "last-modified": "Tue, 13 Oct 2026 09:16:17 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 1670,
+        "sha256": "7b2a0135e1014cec3a96aeaa8911e986df8d9802453facca013e4c7e71c1fad4"
+      }
+    },
+    {
+      "name": "page:/materials",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/materials",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "connection": "keep-alive",
+        "content-length": "1670",
+        "content-type": "text/html",
+        "date": "Tue, 13 Oct 2026 15:13:02 GMT",
+        "etag": "\"6acdf6e1-686\"",
+        "last-modified": "Tue, 13 Oct 2026 09:16:17 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 1670,
+        "sha256": "7b2a0135e1014cec3a96aeaa8911e986df8d9802453facca013e4c7e71c1fad4"
+      }
+    },
+    {
+      "name": "health",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/health",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "16",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:02 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "name": "anonymous-me",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:02 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "login:teacher_a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:02 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:unknown_account",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:teacher_a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "111",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 1,
+        "username": "teacher_a",
+        "role": "teacher",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "191",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 1,
+        "username": "teacher_a",
+        "role": "teacher",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "initial-business-block",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "71",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "code": "password_change_required",
+        "error": "请先修改初始密码"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "login_required": true,
+        "ok": true
+      }
+    },
+    {
+      "name": "changed-cookie-replay",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "login:teacher_a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:teacher_b",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "111",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 2,
+        "username": "teacher_b",
+        "role": "teacher",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "191",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 2,
+        "username": "teacher_b",
+        "role": "teacher",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "initial-business-block",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "71",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "code": "password_change_required",
+        "error": "请先修改初始密码"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "login_required": true,
+        "ok": true
+      }
+    },
+    {
+      "name": "changed-cookie-replay",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:03 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "login:teacher_b",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:student_a1",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "112",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 3,
+        "username": "student_a1",
+        "role": "student",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "192",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 3,
+        "username": "student_a1",
+        "role": "student",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "initial-business-block",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "71",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "code": "password_change_required",
+        "error": "请先修改初始密码"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "login_required": true,
+        "ok": true
+      }
+    },
+    {
+      "name": "changed-cookie-replay",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "login:student_a1",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:student_b1",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "112",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 4,
+        "username": "student_b1",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "192",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 4,
+        "username": "student_b1",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "initial-business-block",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "71",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "code": "password_change_required",
+        "error": "请先修改初始密码"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "login_required": true,
+        "ok": true
+      }
+    },
+    {
+      "name": "changed-cookie-replay",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "login:student_b1",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:04 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:teacher_a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "112",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 1,
+        "username": "teacher_a",
+        "role": "teacher",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "192",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 1,
+        "username": "teacher_a",
+        "role": "teacher",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "login:teacher_b",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "112",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 2,
+        "username": "teacher_b",
+        "role": "teacher",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "192",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 2,
+        "username": "teacher_b",
+        "role": "teacher",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "login:student_a1",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "113",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 3,
+        "username": "student_a1",
+        "role": "student",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "193",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 3,
+        "username": "student_a1",
+        "role": "student",
+        "class_id": 1,
+        "class_name": "A 班"
+      }
+    },
+    {
+      "name": "login:student_b1",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "113",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 4,
+        "username": "student_b1",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "193",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 4,
+        "username": "student_b1",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "A-material-list",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "160",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": [
+        {
+          "id": 1,
+          "class_id": 1,
+          "title": "A 班-课程导论.txt",
+          "original_filename": "A 班-课程导论.txt",
+          "byte_size": 28,
+          "created_at": "2026-10-13T15:12:55.127452Z"
+        }
+      ]
+    },
+    {
+      "name": "B-material-list",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "158",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": [
+        {
+          "id": 2,
+          "class_id": 2,
+          "title": "B 班-学习指南.md",
+          "original_filename": "B 班-学习指南.md",
+          "byte_size": 28,
+          "created_at": "2026-10-13T15:12:55.135866Z"
+        }
+      ]
+    },
+    {
+      "name": "anonymous-download",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/1/file",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "student-own-download",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/1/file",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-disposition": "attachment; filename*=utf-8''A%20%E7%8F%AD-%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA.txt",
+        "content-length": "28",
+        "content-type": "application/octet-stream",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "last-modified": "Tue, 13 Oct 2026 15:12:55 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "bytes": 28,
+        "sha256": "dbcb42c47e5a48468c1bd35c083157d746fdcf4fd6f868e063b99b98b973241a"
+      }
+    },
+    {
+      "name": "teacher-own-download",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/1/file",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-disposition": "attachment; filename*=utf-8''A%20%E7%8F%AD-%E8%AF%BE%E7%A8%8B%E5%AF%BC%E8%AE%BA.txt",
+        "content-length": "28",
+        "content-type": "application/octet-stream",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "last-modified": "Tue, 13 Oct 2026 15:12:55 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "bytes": 28,
+        "sha256": "dbcb42c47e5a48468c1bd35c083157d746fdcf4fd6f868e063b99b98b973241a"
+      }
+    },
+    {
+      "name": "teacher-cross-download",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/2/file",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "资源不存在"
+      }
+    },
+    {
+      "name": "missing-download",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/999999999/file",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "资源不存在"
+      }
+    },
+    {
+      "name": "student-cross-download",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/2/file",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "资源不存在"
+      }
+    },
+    {
+      "name": "cross-detail",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/2",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "资源不存在"
+      }
+    },
+    {
+      "name": "unprotected-storage-path",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/uploads/1/guessed.txt",
+      "status": 404,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "153",
+        "content-type": "text/html",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "bytes": 153,
+        "sha256": "6e95d3011ecc51a72fec8b2a8e5b06b4e134c2b2cfe513bfce42d9029c6c8dd1"
+      }
+    },
+    {
+      "name": "upload:student.txt",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "学生无上传权限"
+      }
+    },
+    {
+      "name": "upload:csrf.txt",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "31",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请求校验失败"
+      }
+    },
+    {
+      "name": "upload:bad.pdf",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "36",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "仅支持 txt/md 文件"
+      }
+    },
+    {
+      "name": "upload:bad.docx",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "36",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "仅支持 txt/md 文件"
+      }
+    },
+    {
+      "name": "upload:bad.png",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "36",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "仅支持 txt/md 文件"
+      }
+    },
+    {
+      "name": "upload:bad.txt",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "文件必须为 UTF-8"
+      }
+    },
+    {
+      "name": "upload:empty.md",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "37",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "文件正文不能为空"
+      }
+    },
+    {
+      "name": "upload:large.txt",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 413,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "31",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "文件超过 5 MiB"
+      }
+    },
+    {
+      "name": "upload:nginx-large.txt",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 413,
+      "headers": {
+        "connection": "close",
+        "content-length": "36",
+        "content-type": "application/json",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff"
+      },
+      "body": {
+        "error": "文件超过大小限制"
+      }
+    },
+    {
+      "name": "failed-upload-no-dirty-record",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "160",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": [
+        {
+          "id": 1,
+          "class_id": 1,
+          "title": "A 班-课程导论.txt",
+          "original_filename": "A 班-课程导论.txt",
+          "byte_size": 28,
+          "created_at": "2026-10-13T15:12:55.127452Z"
+        }
+      ]
+    },
+    {
+      "name": "upload:container-acceptance.txt",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/materials/upload",
+      "status": 201,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "41",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "knowledge_entry_id": 3,
+        "material_id": 3
+      }
+    },
+    {
+      "name": "uploaded-student-detail",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/3",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "267",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "id": 3,
+        "class_id": 1,
+        "title": "container-acceptance.txt",
+        "original_filename": "container-acceptance.txt",
+        "byte_size": 66,
+        "created_at": "2026-10-13T15:13:05.743768Z",
+        "body_text": "第三课容器验收：真实 Nginx、Go、MySQL 与持久化。\n",
+        "knowledge_entry_id": 3
+      }
+    },
+    {
+      "name": "uploaded-knowledge",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/knowledge-entries/3",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "120",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "id": 3,
+        "material_id": 3,
+        "class_id": 1,
+        "body_text": "第三课容器验收：真实 Nginx、Go、MySQL 与持久化。\n"
+      }
+    },
+    {
+      "name": "uploaded-student-file",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/3/file",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-disposition": "attachment; filename=container-acceptance.txt",
+        "content-length": "66",
+        "content-type": "application/octet-stream",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "last-modified": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "bytes": 66,
+        "sha256": "d617b51a1b37e79099569a455f17e4988913de935ce45d4dfce4ee348c448c86"
+      }
+    },
+    {
+      "name": "uploaded-cross-class-file",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials/3/file",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "28",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "资源不存在"
+      }
+    },
+    {
+      "name": "csrf-less-password",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "31",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请求校验失败"
+      }
+    },
+    {
+      "name": "registration-options",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/account-options",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "95",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "classes": [
+          {
+            "code": "A",
+            "name": "A 班"
+          },
+          {
+            "code": "B",
+            "name": "B 班"
+          }
+        ],
+        "demo_registration": true
+      }
+    },
+    {
+      "name": "register-student",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/register",
+      "status": 201,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "40",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:05 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "ok": true
+      }
+    },
+    {
+      "name": "register-duplicate",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/register",
+      "status": 409,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "31",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "用户名已存在"
+      }
+    },
+    {
+      "name": "register-teacher-denied",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/register",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "46",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请求字段或 JSON 格式无效"
+      }
+    },
+    {
+      "name": "login:container_student_00d49b0a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "128",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 5,
+        "username": "container_student_00d49b0a",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "208",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": true,
+        "id": 5,
+        "username": "container_student_00d49b0a",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "registered-first-block",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/materials",
+      "status": 403,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "71",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "code": "password_change_required",
+        "error": "请先修改初始密码"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "84",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "新密码须为 8–72 字节并含字母和数字，两次输入一致"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "84",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "新密码须为 8–72 字节并含字母和数字，两次输入一致"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "46",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请求字段或 JSON 格式无效"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "46",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请求字段或 JSON 格式无效"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "login_required": true,
+        "ok": true
+      }
+    },
+    {
+      "name": "login:container_student_00d49b0a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:container_student_00d49b0a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "129",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 5,
+        "username": "container_student_00d49b0a",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "login:container_student_00d49b0a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "129",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 5,
+        "username": "container_student_00d49b0a",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "identity",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "209",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 5,
+        "username": "container_student_00d49b0a",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "31",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "当前密码错误"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 400,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "31",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:06 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "当前密码错误"
+      }
+    },
+    {
+      "name": "password-change",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/password",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:07 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "login_required": true,
+        "ok": true
+      }
+    },
+    {
+      "name": "password-session-one-revoked",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:07 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "password-session-two-revoked",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:07 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    },
+    {
+      "name": "login:container_student_00d49b0a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:07 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "账号或密码错误"
+      }
+    },
+    {
+      "name": "login:container_student_00d49b0a",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/login",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "129",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:07 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=28800; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "must_change_password": false,
+        "id": 5,
+        "username": "container_student_00d49b0a",
+        "role": "student",
+        "class_id": 2,
+        "class_name": "B 班"
+      }
+    },
+    {
+      "name": "logout",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/api/logout",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "12",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:07 GMT",
+        "server": "nginx/1.28.3",
+        "set-cookie": "campusclaw_session=[REDACTED]; Path=/; Max-Age=0; HttpOnly; SameSite=Lax",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "ok": true
+      }
+    },
+    {
+      "name": "logout-replay",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/api/me",
+      "status": 401,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "25",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 13 Oct 2026 15:13:07 GMT",
+        "server": "nginx/1.28.3",
+        "x-content-type-options": "nosniff, nosniff"
+      },
+      "body": {
+        "error": "请先登录"
+      }
+    }
+  ]
+}

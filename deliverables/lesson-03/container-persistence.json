@@ -1,0 +1,8 @@
+{
+  "Passed": true,
+  "DatabaseRowDigestsUnchanged": true,
+  "FileDigestsUnchanged": true,
+  "ContainersRecreated": true,
+  "VolumesPreserved": true,
+  "Project": "campusclaw-acceptance"
+}

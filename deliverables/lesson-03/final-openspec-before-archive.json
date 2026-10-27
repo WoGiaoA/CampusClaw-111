@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "id": "account-password-management",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 15
+    },
+    {
+      "id": "add-auth-rbac-class-knowledge",
+      "type": "change",
+      "valid": true,
+      "issues": [],
+      "durationMs": 90
+    },
+    {
+      "id": "add-demo-registration-password-management",
+      "type": "change",
+      "valid": true,
+      "issues": [],
+      "durationMs": 64
+    },
+    {
+      "id": "class-access",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 5
+    },
+    {
+      "id": "project-runtime",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 2
+    },
+    {
+      "id": "teaching-materials",
+      "type": "spec",
+      "valid": true,
+      "issues": [],
+      "durationMs": 1
+    }
+  ],
+  "summary": {
+    "totals": {
+      "items": 6,
+      "passed": 6,
+      "failed": 0
+    },
+    "byType": {
+      "change": {
+        "items": 2,
+        "passed": 2,
+        "failed": 0
+      },
+      "spec": {
+        "items": 4,
+        "passed": 4,
+        "failed": 0
+      }
+    }
+  },
+  "version": "1.0",
+  "root": {
+    "path": "D:\\PKU\\Projects\\campusclaw-111",
+    "source": "nearest"
+  }
+}

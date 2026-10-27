@@ -1,0 +1,103 @@
+?   	campusclaw/cmd/api	[no test files]
+?   	campusclaw/cmd/devweb	[no test files]
+=== RUN   TestMySQLSchemaSeeds
+    integration_test.go:218: nine tables, real MySQL constraints, salted hashes, seed idempotence: PASS
+--- PASS: TestMySQLSchemaSeeds (1.60s)
+=== RUN   TestMySQLAuthSessions
+2026/10/13 17:21:14 security event: wrong password
+2026/10/13 17:21:14 security event: unknown account
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: wrong password
+2026/10/13 17:21:15 security event: login rate limit
+2026/10/13 17:21:16 security event: login rate limit
+2026/10/13 17:21:16 security event: login rate limit
+    integration_test.go:309: four logins, uniform failures/rate limit, rotation/revocation/expiry, DB roles, anonymous denial: PASS
+--- PASS: TestMySQLAuthSessions (3.57s)
+=== RUN   TestMySQLIsolationDownload
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class knowledge denied
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class knowledge denied
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class knowledge denied
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class material denied
+2026/10/13 17:21:18 security event: cross-class knowledge denied
+    integration_test.go:358: A/B teacher/student lists and download, cross/missing 404, anonymous 401, no public files: PASS
+--- PASS: TestMySQLIsolationDownload (1.99s)
+=== RUN   TestMySQLUploadRollbackRecovery
+    integration_test.go:461: txt/md 201, UTF8/BOM, same names, 400/413, 403 unchanged, file/DB/commit rollback, startup recovery: PASS
+--- PASS: TestMySQLUploadRollbackRecovery (1.73s)
+=== RUN   TestMySQLHealthAndMissingSeed
+    integration_test.go:504: missing seed secret leaves no users; health unauthenticated 200, actual DB/storage fault 503: PASS
+--- PASS: TestMySQLHealthAndMissingSeed (1.87s)
+=== RUN   TestDemoResetFirstLogin
+2026/10/13 17:21:24 security event: wrong password
+2026/10/13 17:21:24 security event: wrong password
+2026/10/13 17:21:24 security event: wrong password
+2026/10/13 17:21:25 security event: wrong password
+2026/10/13 17:21:25 security event: wrong password
+2026/10/13 17:21:26 security event: wrong password
+2026/10/13 17:21:26 security event: wrong password
+2026/10/13 17:21:27 security event: wrong password
+--- PASS: TestDemoResetFirstLogin (5.13s)
+=== RUN   TestRegistrationPasswordManagement
+2026/10/13 17:21:30 security event: wrong password
+--- PASS: TestRegistrationPasswordManagement (3.40s)
+=== RUN   TestProductionAndIncrementalMigration
+--- PASS: TestProductionAndIncrementalMigration (1.50s)
+=== RUN   TestConcurrentLoginReset
+--- PASS: TestConcurrentLoginReset (1.84s)
+=== RUN   TestValidateText
+=== RUN   TestValidateText/a.txt
+=== RUN   TestValidateText/a.MD
+=== RUN   TestValidateText/a.pdf
+=== RUN   TestValidateText/a.docx
+=== RUN   TestValidateText/a.png
+=== RUN   TestValidateText/a.txt#01
+=== RUN   TestValidateText/a.md
+=== RUN   TestValidateText/a.txt#02
+=== RUN   TestValidateText/a.txt#03
+--- PASS: TestValidateText (0.00s)
+    --- PASS: TestValidateText/a.txt (0.00s)
+    --- PASS: TestValidateText/a.MD (0.00s)
+    --- PASS: TestValidateText/a.pdf (0.00s)
+    --- PASS: TestValidateText/a.docx (0.00s)
+    --- PASS: TestValidateText/a.png (0.00s)
+    --- PASS: TestValidateText/a.txt#01 (0.00s)
+    --- PASS: TestValidateText/a.md (0.00s)
+    --- PASS: TestValidateText/a.txt#02 (0.00s)
+    --- PASS: TestValidateText/a.txt#03 (0.00s)
+=== RUN   TestConfigAndSecrets
+--- PASS: TestConfigAndSecrets (0.11s)
+=== RUN   TestStorageConfinedAndRollback
+--- PASS: TestStorageConfinedAndRollback (0.12s)
+=== RUN   TestCSRF
+--- PASS: TestCSRF (0.00s)
+PASS
+ok  	campusclaw/internal/campus	25.097s
+✔ student sees own material/download and no upload form; title escaped (188.7526ms)
+✔ teacher receives upload form and me-derived identity (69.3018ms)
+✔ login is JSON POST, ordinary account/password form, no account picker (46.3418ms)
+✔ first-login material page navigates to profile before fetching business data (13.8926ms)
+✔ registration posts only username/class code and displays local initial password (47.4276ms)
+✔ profile shows trusted identity, first change hides current password, normal requires it (65.1792ms)
+✔ production login hides registration and production register page refuses form (62.7451ms)
+✔ anonymous API 401 navigates material page to login before rendering data (11.4424ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1841.8119
