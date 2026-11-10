@@ -2,6 +2,9 @@ param([switch]$Integration)
 $ErrorActionPreference='Stop'
 $projectRoot=Split-Path $PSScriptRoot -Parent
 Set-Location -LiteralPath $projectRoot
+$env:TEMP=Join-Path $projectRoot '.local\test-tmp'
+$env:TMP=$env:TEMP
+New-Item -ItemType Directory -Force -Path $env:TEMP | Out-Null
 $env:GOPATH=Join-Path $projectRoot '.local\gopath'
 $env:GOCACHE=Join-Path $projectRoot '.local\gocache'
 $goCommand=Get-Command go -ErrorAction SilentlyContinue
@@ -15,6 +18,11 @@ if(!$Integration){$env:MYSQL_TEST_ADDR='';Write-Output 'Unit mode: MySQL integra
 $resultsDir=Join-Path $projectRoot '.local\test-results'
 New-Item -ItemType Directory -Force -Path $resultsDir | Out-Null
 try {
+ if($Integration){
+  $env:CAMPUSCLAW_TEST_MCP_EXE=Join-Path $resultsDir 'campus-mcp.exe'
+  & $go build -o $env:CAMPUSCLAW_TEST_MCP_EXE ./mcp-server
+  if($LASTEXITCODE -ne 0){throw 'MCP test server build failed'}
+ }
  $events=@(& $go test ./... -count=1 -json)
  $testExit=$LASTEXITCODE
  $events | Set-Content -LiteralPath (Join-Path $resultsDir 'go.jsonl') -Encoding UTF8

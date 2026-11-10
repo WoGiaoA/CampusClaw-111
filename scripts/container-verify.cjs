@@ -15,7 +15,7 @@ async function call(name,path,{method='GET',body,cookie,csrf,form}={}){
  const raw=Buffer.from(await response.arrayBuffer());const json=(response.headers.get('content-type')||'').includes('json');const result=json?JSON.parse(raw.toString()):raw;
  const recordedHeaders=Object.fromEntries(response.headers);if(recordedHeaders['set-cookie'])recordedHeaders['set-cookie']=recordedHeaders['set-cookie'].replace(/^[^;]+/,'campusclaw_session=[REDACTED]');
  const safeBody=json?{...result}: {bytes:raw.length,sha256:sha(raw)};if(Array.isArray(result)){checks.push({name,method,url:base+path,status:response.status,headers:recordedHeaders,body:result});}
- else{delete safeBody.csrf_token;checks.push({name,method,url:base+path,status:response.status,headers:recordedHeaders,body:safeBody});}
+ else{delete safeBody.csrf_token;delete safeBody.access_token;checks.push({name,method,url:base+path,status:response.status,headers:recordedHeaders,body:safeBody});}
  return {status:response.status,body:result,raw,cookie:response.headers.get('set-cookie')?.split(';')[0]};
 }
 function status(value,expected){assert.equal(value.status,expected);return value;}

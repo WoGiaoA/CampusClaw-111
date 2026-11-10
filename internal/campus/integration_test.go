@@ -180,7 +180,7 @@ func TestMySQLSchemaSeeds(t *testing.T) {
 	s, _ := testServer(t)
 	var tables int
 	s.DB.QueryRow("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE()").Scan(&tables)
-	if tables != 9 {
+	if tables != 24 {
 		t.Fatal(tables)
 	}
 	var hash string
@@ -215,7 +215,7 @@ func TestMySQLSchemaSeeds(t *testing.T) {
 	if indexes < 2 {
 		t.Fatal("missing tenant indexes")
 	}
-	t.Log("nine tables, real MySQL constraints, salted hashes, seed idempotence: PASS")
+	t.Log("twenty-three tables, real MySQL constraints, salted hashes, seed idempotence: PASS")
 }
 func TestMySQLAuthSessions(t *testing.T) {
 	s, server := testServer(t)
@@ -470,7 +470,7 @@ func TestMySQLUploadRollbackRecovery(t *testing.T) {
 func TestMySQLHealthAndMissingSeed(t *testing.T) {
 	s, server := testServer(t)
 	// Only this test's disposable database is emptied, never the running app.
-	for _, table := range []string{"knowledge_entries", "materials", "users", "classes"} {
+	for _, table := range []string{"assistant_skills", "assistant_materials", "skills", "assistants", "prompt_templates", "ai_migrations", "knowledge_entries", "materials", "users", "classes"} {
 		if _, err := s.DB.Exec("DELETE FROM " + table); err != nil {
 			t.Fatal(err)
 		}

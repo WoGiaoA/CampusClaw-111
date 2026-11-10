@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-04",
+  "status": "development-tested-awaiting-user-acceptance",
+  "go": {
+    "mode": "isolated-integration",
+    "passed": [
+      "TestFinalCourseworkEvidence",
+      "TestMySQLSchemaSeeds",
+      "TestMySQLAuthSessions",
+      "TestMySQLIsolationDownload",
+      "TestMySQLUploadRollbackRecovery",
+      "TestMySQLHealthAndMissingSeed",
+      "TestLoginRejectsMalformedJSON",
+      "TestAccountJSONMediaType",
+      "TestMySQLLoginJSONParameters",
+      "TestDemoResetFirstLogin",
+      "TestRegistrationPasswordManagement",
+      "TestProductionAndIncrementalMigration",
+      "TestConcurrentLoginReset",
+      "TestRealQdrantRoundTrip",
+      "TestTokenLifecycle",
+      "TestRAGWorkflowAndIsolation",
+      "TestRetrievalMigrationRecoveryAndConstraints",
+      "TestLegacyRetrievalMigration",
+      "TestChunkCoordinates",
+      "TestRRFFilteredRanks",
+      "TestBearerCredentialParsing",
+      "TestRetrievalConfiguration",
+      "TestExternalClientValidation",
+      "TestAnswerReferences",
+      "TestIndexRetryBound",
+      "TestCollectionAndWriteValidation",
+      "TestValidateText",
+      "TestConfigAndSecrets",
+      "TestStorageConfinedAndRollback",
+      "TestCSRF"
+    ],
+    "skipped": [],
+    "failed": []
+  },
+  "dom": {
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "go_vet": true,
+    "go_build": true,
+    "js_syntax": true,
+    "compose_static": true,
+    "openspec_strict": true
+  },
+  "real_services": [
+    "isolated MySQL 8.4.9",
+    "disposable Qdrant v1.14.1"
+  ],
+  "simulated_services": [
+    "Embedding HTTP",
+    "Chat Completions HTTP"
+  ],
+  "unverified": [
+    "real model gateway",
+    "main Compose deployment and Nginx",
+    "browser Network screenshots and multiple viewports",
+    "main volume persistence and actual process interruption"
+  ],
+  "pdf_generated": false
+}

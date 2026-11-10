@@ -137,9 +137,9 @@ func (s *Server) changePassword(w http.ResponseWriter, r *http.Request) {
 		problem(w, 503, "服务暂不可用")
 		return
 	}
-	cookie, _ := r.Cookie(cookieName)
+	token, _ := credential(r)
 	var exists int
-	if e = tx.QueryRowContext(r.Context(), "SELECT COUNT(*) FROM sessions WHERE id_hash=? AND user_id=? AND expires_at>?", s.sessionHash(cookie.Value), u.ID, s.now().UTC()).Scan(&exists); e != nil {
+	if e = tx.QueryRowContext(r.Context(), "SELECT COUNT(*) FROM sessions WHERE id_hash=? AND user_id=? AND expires_at>?", s.sessionHash(token), u.ID, s.now().UTC()).Scan(&exists); e != nil {
 		problem(w, 503, "服务暂不可用")
 		return
 	}

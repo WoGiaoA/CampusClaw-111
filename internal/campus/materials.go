@@ -18,6 +18,9 @@ import (
 const maxFileSize = 5 << 20
 
 type Material struct {
+	IndexStatus string    `json:"index_status,omitempty"`
+	ChunkCount  int       `json:"chunk_count"`
+	IndexError  string    `json:"index_error,omitempty"`
 	ID          int64     `json:"id"`
 	ClassID     int64     `json:"class_id"`
 	Title       string    `json:"title"`
@@ -36,7 +39,7 @@ type Knowledge struct {
 }
 
 func (s *Server) listMaterials(w http.ResponseWriter, r *http.Request) {
-	rows, e := s.DB.QueryContext(r.Context(), "SELECT id,class_id,title,original_filename,byte_size,created_at FROM materials WHERE class_id=? ORDER BY id DESC", currentUser(r).ClassID)
+	rows, e := s.DB.QueryContext(r.Context(), "SELECT id,class_id,title,original_filename,byte_size,created_at FROM materials WHERE class_id=? AND deleted_at IS NULL ORDER BY id DESC", currentUser(r).ClassID)
 	if e != nil {
 		problem(w, 503, "服务暂不可用")
 		return
@@ -66,6 +69,9 @@ func (s *Server) ownedMaterial(r *http.Request) (Material, error) {
 	if e != nil || id < 1 {
 		return m, sql.ErrNoRows
 	}
+	if e = s.materialAvailable(r.Context(), s.DB, id, currentUser(r).ClassID); e != nil {
+		return m, e
+	}
 	e = s.DB.QueryRowContext(r.Context(), "SELECT m.id,m.class_id,m.title,m.original_filename,m.byte_size,m.created_at,m.storage_key,k.id,k.body_text FROM materials m JOIN knowledge_entries k ON k.material_id=m.id AND k.class_id=m.class_id WHERE m.id=?", id).Scan(&m.ID, &m.ClassID, &m.Title, &m.Filename, &m.ByteSize, &m.Created, &m.Storage, &m.KnowledgeID, &m.Body)
 	if e != nil {
 		return m, e
@@ -77,7 +83,9 @@ func (s *Server) ownedMaterial(r *http.Request) (Material, error) {
 	return m, nil
 }
 func resourceError(w http.ResponseWriter, e error) {
-	if errors.Is(e, sql.ErrNoRows) {
+	if errors.Is(e, errMaterialDeleted) {
+		aiError(w, 410, "material_deleted", "材料已删除，原文与引用片段不可用")
+	} else if errors.Is(e, sql.ErrNoRows) {
 		problem(w, 404, "资源不存在")
 	} else {
 		problem(w, 503, "服务暂不可用")
@@ -88,6 +96,19 @@ func (s *Server) materialDetail(w http.ResponseWriter, r *http.Request) {
 	if e != nil {
 		resourceError(w, e)
 		return
+	}
+
+	m.IndexStatus = "pending"
+	e = s.DB.QueryRowContext(r.Context(), "SELECT status,last_error_code FROM knowledge_index_jobs WHERE material_id=? AND class_id=?", m.ID, m.ClassID).Scan(&m.IndexStatus, &m.IndexError)
+	if e != nil && !errors.Is(e, sql.ErrNoRows) {
+		resourceError(w, e)
+		return
+	}
+	if m.IndexStatus == "ready" {
+		if e = s.DB.QueryRowContext(r.Context(), "SELECT COUNT(*) FROM knowledge_chunks WHERE material_id=? AND class_id=? AND index_status='ready'", m.ID, m.ClassID).Scan(&m.ChunkCount); e != nil {
+			resourceError(w, e)
+			return
+		}
 	}
 	writeJSON(w, 200, m)
 }
@@ -118,7 +139,7 @@ func (s *Server) download(w http.ResponseWriter, r *http.Request) {
 	http.ServeContent(w, r, m.Filename, stat.ModTime(), file)
 }
 func (s *Server) listKnowledge(w http.ResponseWriter, r *http.Request) {
-	rows, e := s.DB.QueryContext(r.Context(), "SELECT id,material_id,class_id,body_text FROM knowledge_entries WHERE class_id=? ORDER BY id DESC", currentUser(r).ClassID)
+	rows, e := s.DB.QueryContext(r.Context(), "SELECT k.id,k.material_id,k.class_id,k.body_text FROM knowledge_entries k JOIN materials m ON m.id=k.material_id AND m.class_id=k.class_id WHERE k.class_id=? AND m.deleted_at IS NULL ORDER BY k.id DESC", currentUser(r).ClassID)
 	if e != nil {
 		problem(w, 503, "服务暂不可用")
 		return
@@ -144,6 +165,16 @@ func (s *Server) knowledgeDetail(w http.ResponseWriter, r *http.Request) {
 	id, e := strconv.ParseInt(r.PathValue("id"), 10, 64)
 	if e != nil || id < 1 {
 		resourceError(w, sql.ErrNoRows)
+		return
+	}
+	var withdrawn int
+	e = s.DB.QueryRowContext(r.Context(), "SELECT COUNT(*) FROM material_deletions WHERE knowledge_entry_id=? AND class_id=?", id, currentUser(r).ClassID).Scan(&withdrawn)
+	if e != nil {
+		resourceError(w, e)
+		return
+	}
+	if withdrawn > 0 {
+		resourceError(w, errMaterialDeleted)
 		return
 	}
 	e = s.DB.QueryRowContext(r.Context(), "SELECT id,material_id,class_id,body_text FROM knowledge_entries WHERE id=?", id).Scan(&k.ID, &k.MaterialID, &k.ClassID, &k.Body)
@@ -338,5 +369,6 @@ func (s *Server) upload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	keep = true
+	_ = s.enqueueMissing(r.Context())
 	writeJSON(w, 201, map[string]int64{"material_id": id, "knowledge_entry_id": kid})
 }

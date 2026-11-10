@@ -1,0 +1,200 @@
+Real Qdrant v1.14.1 in disposable tmpfs container; embedding/chat use HTTP test doubles, never real keys.
+Running real HTTP/DB tests against a new isolated MySQL data directory; no business database or Docker is used.
+?   	campusclaw/cmd/api	[no test files]
+?   	campusclaw/cmd/devweb	[no test files]
+=== RUN   TestFinalCourseworkEvidence
+2026/11/04 00:41:30 security event: wrong password
+2026/11/04 00:41:30 security event: unknown account
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class knowledge denied
+2026/11/04 00:41:30 security event: cross-class material denied
+2026/11/04 00:41:30 security event: cross-class knowledge denied
+    acceptance_test.go:297: 73 final coursework HTTP checks passed; cookies, CSRF and passwords redacted
+--- PASS: TestFinalCourseworkEvidence (2.68s)
+=== RUN   TestMySQLSchemaSeeds
+    integration_test.go:218: eleven tables, real MySQL constraints, salted hashes, seed idempotence: PASS
+--- PASS: TestMySQLSchemaSeeds (1.81s)
+=== RUN   TestMySQLAuthSessions
+2026/11/04 00:41:34 security event: wrong password
+2026/11/04 00:41:34 security event: unknown account
+2026/11/04 00:41:34 security event: wrong password
+2026/11/04 00:41:34 security event: wrong password
+2026/11/04 00:41:35 security event: wrong password
+2026/11/04 00:41:35 security event: wrong password
+2026/11/04 00:41:35 security event: wrong password
+2026/11/04 00:41:35 security event: wrong password
+2026/11/04 00:41:35 security event: wrong password
+2026/11/04 00:41:35 security event: wrong password
+2026/11/04 00:41:35 security event: login rate limit
+2026/11/04 00:41:35 security event: login rate limit
+2026/11/04 00:41:35 security event: login rate limit
+    integration_test.go:309: four logins, uniform failures/rate limit, rotation/revocation/expiry, DB roles, anonymous denial: PASS
+--- PASS: TestMySQLAuthSessions (3.98s)
+=== RUN   TestMySQLIsolationDownload
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class knowledge denied
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class knowledge denied
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class knowledge denied
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class material denied
+2026/11/04 00:41:38 security event: cross-class knowledge denied
+    integration_test.go:365: A/B teacher/student lists and download, cross/missing 404, anonymous 401, no public files: PASS
+--- PASS: TestMySQLIsolationDownload (2.39s)
+=== RUN   TestMySQLUploadRollbackRecovery
+    integration_test.go:468: txt/md 201, UTF8/BOM, same names, 400/413, 403 unchanged, file/DB/commit rollback, startup recovery: PASS
+--- PASS: TestMySQLUploadRollbackRecovery (1.98s)
+=== RUN   TestMySQLHealthAndMissingSeed
+    integration_test.go:511: missing seed secret leaves no users; health unauthenticated 200, actual DB/storage fault 503: PASS
+--- PASS: TestMySQLHealthAndMissingSeed (2.17s)
+=== RUN   TestLoginRejectsMalformedJSON
+=== RUN   TestLoginRejectsMalformedJSON/wrong_media
+--- PASS: TestLoginRejectsMalformedJSON/wrong_media (0.00s)
+=== RUN   TestLoginRejectsMalformedJSON/bad_media_parameter
+--- PASS: TestLoginRejectsMalformedJSON/bad_media_parameter (0.00s)
+=== RUN   TestLoginRejectsMalformedJSON/second_value
+--- PASS: TestLoginRejectsMalformedJSON/second_value (0.00s)
+=== RUN   TestLoginRejectsMalformedJSON/trailing_garbage
+--- PASS: TestLoginRejectsMalformedJSON/trailing_garbage (0.00s)
+=== RUN   TestLoginRejectsMalformedJSON/oversized_whitespace
+--- PASS: TestLoginRejectsMalformedJSON/oversized_whitespace (0.00s)
+=== RUN   TestLoginRejectsMalformedJSON/truncated
+--- PASS: TestLoginRejectsMalformedJSON/truncated (0.00s)
+--- PASS: TestLoginRejectsMalformedJSON (0.00s)
+=== RUN   TestAccountJSONMediaType
+--- PASS: TestAccountJSONMediaType (0.00s)
+=== RUN   TestMySQLLoginJSONParameters
+--- PASS: TestMySQLLoginJSONParameters (1.81s)
+=== RUN   TestDemoResetFirstLogin
+2026/11/04 00:41:46 security event: wrong password
+2026/11/04 00:41:47 security event: wrong password
+2026/11/04 00:41:47 security event: wrong password
+2026/11/04 00:41:48 security event: wrong password
+2026/11/04 00:41:48 security event: wrong password
+2026/11/04 00:41:49 security event: wrong password
+2026/11/04 00:41:49 security event: wrong password
+2026/11/04 00:41:49 security event: wrong password
+--- PASS: TestDemoResetFirstLogin (5.44s)
+=== RUN   TestRegistrationPasswordManagement
+2026/11/04 00:41:53 security event: wrong password
+--- PASS: TestRegistrationPasswordManagement (3.85s)
+=== RUN   TestProductionAndIncrementalMigration
+--- PASS: TestProductionAndIncrementalMigration (1.86s)
+=== RUN   TestConcurrentLoginReset
+--- PASS: TestConcurrentLoginReset (2.18s)
+=== RUN   TestRealQdrantRoundTrip
+    qdrant_integration_test.go:74: Real Qdrant collection creation, Cosine configuration, confirmed upsert/delete, filtered search, SQL source lookup and reindex passed; embedding/chat remain HTTP doubles.
+--- PASS: TestRealQdrantRoundTrip (2.26s)
+=== RUN   TestTokenLifecycle
+--- PASS: TestTokenLifecycle (2.12s)
+=== RUN   TestRAGWorkflowAndIsolation
+--- PASS: TestRAGWorkflowAndIsolation (2.11s)
+=== RUN   TestRetrievalMigrationRecoveryAndConstraints
+2026/11/04 00:42:06 security event: cross-class material denied
+--- PASS: TestRetrievalMigrationRecoveryAndConstraints (1.91s)
+=== RUN   TestLegacyRetrievalMigration
+--- PASS: TestLegacyRetrievalMigration (2.29s)
+=== RUN   TestChunkCoordinates
+--- PASS: TestChunkCoordinates (0.00s)
+=== RUN   TestRRFFilteredRanks
+--- PASS: TestRRFFilteredRanks (0.00s)
+=== RUN   TestBearerCredentialParsing
+--- PASS: TestBearerCredentialParsing (0.00s)
+=== RUN   TestRetrievalConfiguration
+--- PASS: TestRetrievalConfiguration (0.00s)
+=== RUN   TestExternalClientValidation
+=== RUN   TestExternalClientValidation/success
+--- PASS: TestExternalClientValidation/success (0.00s)
+=== RUN   TestExternalClientValidation/dimension
+--- PASS: TestExternalClientValidation/dimension (0.00s)
+=== RUN   TestExternalClientValidation/zero
+--- PASS: TestExternalClientValidation/zero (0.00s)
+=== RUN   TestExternalClientValidation/badindex
+--- PASS: TestExternalClientValidation/badindex (0.00s)
+=== RUN   TestExternalClientValidation/html
+--- PASS: TestExternalClientValidation/html (0.00s)
+=== RUN   TestExternalClientValidation/auth
+--- PASS: TestExternalClientValidation/auth (0.00s)
+=== RUN   TestExternalClientValidation/limit
+--- PASS: TestExternalClientValidation/limit (0.00s)
+--- PASS: TestExternalClientValidation (0.03s)
+=== RUN   TestAnswerReferences
+--- PASS: TestAnswerReferences (0.00s)
+=== RUN   TestIndexRetryBound
+--- PASS: TestIndexRetryBound (3.00s)
+=== RUN   TestCollectionAndWriteValidation
+--- PASS: TestCollectionAndWriteValidation (0.00s)
+=== RUN   TestValidateText
+=== RUN   TestValidateText/a.txt
+--- PASS: TestValidateText/a.txt (0.00s)
+=== RUN   TestValidateText/a.MD
+--- PASS: TestValidateText/a.MD (0.00s)
+=== RUN   TestValidateText/a.pdf
+--- PASS: TestValidateText/a.pdf (0.00s)
+=== RUN   TestValidateText/a.docx
+--- PASS: TestValidateText/a.docx (0.00s)
+=== RUN   TestValidateText/a.png
+--- PASS: TestValidateText/a.png (0.00s)
+=== RUN   TestValidateText/a.txt#01
+--- PASS: TestValidateText/a.txt#01 (0.00s)
+=== RUN   TestValidateText/a.md
+--- PASS: TestValidateText/a.md (0.00s)
+=== RUN   TestValidateText/a.txt#02
+--- PASS: TestValidateText/a.txt#02 (0.00s)
+=== RUN   TestValidateText/a.txt#03
+--- PASS: TestValidateText/a.txt#03 (0.00s)
+--- PASS: TestValidateText (0.00s)
+=== RUN   TestConfigAndSecrets
+--- PASS: TestConfigAndSecrets (0.11s)
+=== RUN   TestStorageConfinedAndRollback
+--- PASS: TestStorageConfinedAndRollback (0.13s)
+=== RUN   TestCSRF
+--- PASS: TestCSRF (0.00s)
+PASS
+ok  	campusclaw/internal/campus	46.320s
+Go top-level: 30 passed, 0 skipped, 0 failed.
+✔ student sees own material/download and no upload form; title escaped (210.3141ms)
+✔ teacher receives upload form and me-derived identity (70.4559ms)
+✔ login is JSON POST, ordinary account/password form, no account picker (75.5324ms)
+✔ first-login material page navigates to profile before fetching business data (13.562ms)
+✔ registration posts only username/class code and displays local initial password (62.7255ms)
+✔ profile shows trusted identity, first change hides current password, normal requires it (78.9125ms)
+✔ production login hides registration and production register page refuses form (73.5337ms)
+✔ anonymous API 401 navigates material page to login before rendering data (15.7667ms)
+✔ gateway HTML and network failures produce readable messages without exposing HTML (12.3539ms)
+✔ committed upload followed by list failure stays successful and can refresh without reupload (97.4734ms)
+✔ successful login preserves ordinary and first-change navigation and clears submitted password (106.6678ms)
+✔ file selection is safe text; upload keeps multipart, CSRF, busy state and resets selection (77.5445ms)
+✔ refresh shows busy state, restores control and presents empty state without changing permissions (77.5693ms)
+✔ view body uses protected detail URL, escapes content and removes closed dialog (78.228ms)
+✔ profile password form retains exact protocol and CSRF while displaying server validation (43.5836ms)
+✔ Bearer token persists on login and is added to protected JSON and multipart requests (94.6881ms)
+Not implemented: navigation to another Document
+✔ login stores returned token and 401 clears it (77.2514ms)
+✔ RAG submits question, renders answer and citations as safe text, restores buttons (78.3575ms)
+✔ search defaults hybrid and sends selected modes; empty versus dependency error differ (152.5819ms)
+✔ citation opens protected chunk and original; teacher rebuild includes CSRF and Bearer (77.0381ms)
+✔ download uses authenticated fetch and Blob, never token in URL (78.1488ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3017.5194
+Build, vet, JS syntax and DOM tests passed. This does not constitute Docker or user acceptance.
+This run MySQL process stopped. Isolated test files retained under ignored .local/regression-db.
+Only this run disposable Qdrant container was stopped and auto-removed.

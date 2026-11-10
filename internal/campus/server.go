@@ -15,13 +15,14 @@ import (
 )
 
 type Server struct {
-	DB        *sql.DB
-	Config    Config
-	dummyHash []byte
-	mu        sync.Mutex
-	failures  map[string]attempts
-	uploadMu  sync.Mutex
-	unhealthy atomic.Bool
+	DB            *sql.DB
+	Config        Config
+	dummyHash     []byte
+	mu            sync.Mutex
+	failures      map[string]attempts
+	uploadMu      sync.Mutex
+	materialLives sync.Map
+	unhealthy     atomic.Bool
 	// Test-only failure injection, never controlled by HTTP or env.
 	fail func(string) error
 	now  func() time.Time
@@ -31,13 +32,14 @@ type attempts struct {
 	Start time.Time
 }
 type User struct {
-	MustChangePassword bool   `json:"must_change_password"`
-	ID                 int64  `json:"id"`
-	Username           string `json:"username"`
-	Role               string `json:"role"`
-	ClassID            int64  `json:"class_id"`
-	ClassName          string `json:"class_name"`
-	CSRF               string `json:"csrf_token,omitempty"`
+	MustChangePassword bool    `json:"must_change_password"`
+	ID                 int64   `json:"id"`
+	Username           string  `json:"username"`
+	Nickname           *string `json:"nickname"`
+	Role               string  `json:"role"`
+	ClassID            int64   `json:"class_id"`
+	ClassName          string  `json:"class_name"`
+	CSRF               string  `json:"csrf_token,omitempty"`
 }
 type identityKey struct{}
 
@@ -59,7 +61,37 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("POST /api/register", s.register)
 	mux.Handle("POST /api/password", s.auth(http.HandlerFunc(s.changePassword)))
 	mux.Handle("GET /api/me", s.auth(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { writeJSON(w, 200, currentUser(r)) })))
+	mux.Handle("PATCH /api/me", s.auth(http.HandlerFunc(s.changeNickname)))
 	mux.Handle("POST /api/logout", s.auth(http.HandlerFunc(s.logout)))
+	mux.Handle("GET /api/ai/apps", s.auth(http.HandlerFunc(s.listAIApps)))
+	mux.Handle("POST /api/ai/apps", s.auth(http.HandlerFunc(s.createAIApp)))
+	mux.Handle("GET /api/mcp/servers", s.auth(http.HandlerFunc(s.listMCPServers)))
+	mux.Handle("GET /api/mcp/audit", s.auth(http.HandlerFunc(s.listMCPAudit)))
+	mux.Handle("POST /api/mcp/servers", s.auth(http.HandlerFunc(s.writeMCPServer)))
+	mux.Handle("PATCH /api/mcp/servers/{id}", s.auth(http.HandlerFunc(s.writeMCPServer)))
+	mux.Handle("POST /api/mcp/servers/{id}/connect", s.auth(http.HandlerFunc(s.changeMCPConnection)))
+	mux.Handle("POST /api/mcp/servers/{id}/disconnect", s.auth(http.HandlerFunc(s.changeMCPConnection)))
+	mux.Handle("GET /api/mcp/servers/{id}/tools", s.auth(http.HandlerFunc(s.listMCPTools)))
+	mux.Handle("GET /api/ai/apps/{app_id}/tool-grants", s.auth(http.HandlerFunc(s.mcpAppGrants)))
+	mux.Handle("PUT /api/ai/apps/{app_id}/tool-grants", s.auth(http.HandlerFunc(s.mcpAppGrants)))
+	mux.Handle("PATCH /api/ai/apps/{app_id}", s.auth(http.HandlerFunc(s.patchAIApp)))
+	mux.Handle("DELETE /api/ai/apps/{app_id}", s.auth(http.HandlerFunc(s.deleteAIApp)))
+	mux.Handle("GET /api/ai/prompt-templates", s.auth(http.HandlerFunc(s.listAITemplates)))
+	mux.Handle("POST /api/ai/prompt-templates", s.auth(http.HandlerFunc(s.writeAITemplate)))
+	mux.Handle("PATCH /api/ai/prompt-templates/{template_id}", s.auth(http.HandlerFunc(s.writeAITemplate)))
+	mux.Handle("GET /api/ai/skills", s.auth(http.HandlerFunc(s.listAISkills)))
+	mux.Handle("POST /api/ai/skills", s.auth(http.HandlerFunc(s.writeAISkill)))
+	mux.Handle("PATCH /api/ai/skills/{skill_id}", s.auth(http.HandlerFunc(s.writeAISkill)))
+	mux.Handle("GET /api/ai/conversations", s.auth(http.HandlerFunc(s.listAIConversations)))
+	mux.Handle("POST /api/ai/conversations", s.auth(http.HandlerFunc(s.createAIConversation)))
+	mux.Handle("GET /api/ai/conversations/{conversation_id}", s.auth(http.HandlerFunc(s.getAIConversation)))
+	mux.Handle("DELETE /api/ai/conversations/{conversation_id}", s.auth(http.HandlerFunc(s.deleteAIConversation)))
+	mux.Handle("POST /api/ai/conversations/{conversation_id}/messages", s.auth(http.HandlerFunc(s.sendAIMessage)))
+	mux.Handle("POST /api/search", s.auth(http.HandlerFunc(s.search)))
+	mux.Handle("POST /api/ask", s.auth(http.HandlerFunc(s.ask)))
+	mux.Handle("POST /api/materials/{id}/reindex", s.auth(http.HandlerFunc(s.reindex)))
+	mux.Handle("DELETE /api/materials/{id}", s.auth(http.HandlerFunc(s.deleteMaterial)))
+	mux.Handle("GET /api/materials/{id}/chunks/{chunk_id}", s.auth(http.HandlerFunc(s.chunkDetail)))
 	mux.Handle("GET /api/materials", s.auth(http.HandlerFunc(s.listMaterials)))
 	mux.Handle("GET /api/materials/{id}", s.auth(http.HandlerFunc(s.materialDetail)))
 	mux.Handle("GET /api/materials/{id}/file", s.auth(http.HandlerFunc(s.download)))
@@ -83,13 +115,13 @@ func problem(w http.ResponseWriter, status int, message string) {
 func currentUser(r *http.Request) User { return r.Context().Value(identityKey{}).(User) }
 func (s *Server) auth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		cookie, err := r.Cookie(cookieName)
-		if err != nil || len(cookie.Value) != 64 {
+		token, ok := credential(r)
+		if !ok {
 			problem(w, 401, "请先登录")
 			return
 		}
 		var u User
-		err = s.DB.QueryRowContext(r.Context(), `SELECT u.id,u.username,u.role,u.class_id,c.name,se.csrf_token,u.must_change_password FROM sessions se JOIN users u ON se.user_id=u.id JOIN classes c ON c.id=u.class_id WHERE se.id_hash=? AND se.expires_at>?`, s.sessionHash(cookie.Value), s.now().UTC()).Scan(&u.ID, &u.Username, &u.Role, &u.ClassID, &u.ClassName, &u.CSRF, &u.MustChangePassword)
+		err := s.DB.QueryRowContext(r.Context(), `SELECT u.id,u.username,u.nickname,u.role,u.class_id,c.name,se.csrf_token,u.must_change_password FROM sessions se JOIN users u ON se.user_id=u.id JOIN classes c ON c.id=u.class_id WHERE se.id_hash=? AND se.expires_at>?`, s.sessionHash(token), s.now().UTC()).Scan(&u.ID, &u.Username, &u.Nickname, &u.Role, &u.ClassID, &u.ClassName, &u.CSRF, &u.MustChangePassword)
 		if errors.Is(err, sql.ErrNoRows) {
 			problem(w, 401, "请先登录")
 			return
@@ -98,7 +130,7 @@ func (s *Server) auth(next http.Handler) http.Handler {
 			problem(w, 503, "服务暂不可用")
 			return
 		}
-		if u.MustChangePassword && r.URL.Path != "/api/me" && r.URL.Path != "/api/password" && r.URL.Path != "/api/logout" {
+		if u.MustChangePassword && !(r.Method == http.MethodGet && r.URL.Path == "/api/me") && r.URL.Path != "/api/password" && r.URL.Path != "/api/logout" {
 			writeJSON(w, 403, map[string]string{"error": "请先修改初始密码", "code": "password_change_required"})
 			return
 		}

@@ -28,7 +28,7 @@ func TestFinalCourseworkEvidence(t *testing.T) {
 		case map[string]any:
 			out := map[string]any{}
 			for k, x := range v {
-				if k == "csrf_token" || k == "password" || k == "password_hash" {
+				if k == "access_token" || k == "csrf_token" || k == "password" || k == "password_hash" {
 					out[k] = "[REDACTED]"
 				} else {
 					out[k] = redact(x)

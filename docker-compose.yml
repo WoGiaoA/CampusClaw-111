@@ -32,9 +32,20 @@ services:
    SEED_TEACHER_B_PASSWORD: ${SEED_TEACHER_B_PASSWORD:-}
    SEED_STUDENT_A1_PASSWORD: ${SEED_STUDENT_A1_PASSWORD:-}
    SEED_STUDENT_B1_PASSWORD: ${SEED_STUDENT_B1_PASSWORD:-}
+   EMBEDDING_BASE_URL: ${EMBEDDING_BASE_URL:-}
+   EMBEDDING_MODEL: ${EMBEDDING_MODEL:-}
+   EMBEDDING_API_KEY: ${EMBEDDING_API_KEY:-}
+   EMBEDDING_DIMENSION: ${EMBEDDING_DIMENSION:-}
+   QDRANT_URL: http://qdrant:6333
+   QDRANT_API_KEY: ${QDRANT_API_KEY:-}
+   CHAT_BASE_URL: ${CHAT_BASE_URL:-}
+   CHAT_MODEL: ${CHAT_MODEL:-}
+   CHAT_API_KEY: ${CHAT_API_KEY:-}
+   MCP_CREDENTIAL_KEY: ${MCP_CREDENTIAL_KEY:-}
    UPLOAD_DIR: /uploads
   volumes:
    - uploads:/uploads
+  networks: [default, tools]
   depends_on:
    db:
     condition: service_healthy
@@ -44,6 +55,29 @@ services:
    timeout: 5s
    retries: 6
    start_period: 30s
+ mcp-server:
+  profiles: [mcp]
+  build:
+   context: .
+   dockerfile: mcp-server/Dockerfile
+   args:
+    IMAGE_REGISTRY: ${IMAGE_REGISTRY:-public.ecr.aws/docker/library}
+  environment:
+   MCP_SERVER_TOKEN: ${MCP_SERVER_TOKEN:-}
+  networks: [tools]
+  healthcheck:
+   test: [CMD, campus-mcp, healthcheck]
+   interval: 10s
+   timeout: 3s
+   retries: 4
+ qdrant:
+  image: qdrant/qdrant:v1.14.1
+  command: ["/bin/sh", "/qdrant-start.sh"]
+  environment:
+   QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY:-}
+  volumes:
+   - qdrant-data:/qdrant/storage
+   - ./deploy/qdrant-entrypoint.sh:/qdrant-start.sh:ro
  web:
   image: ${IMAGE_REGISTRY:-public.ecr.aws/docker/library}/nginx:1.28-alpine
   ports:
@@ -59,6 +93,10 @@ services:
    interval: 10s
    timeout: 5s
    retries: 3
+networks:
+ tools:
+  internal: true
 volumes:
  db-data:
  uploads:
+ qdrant-data:

@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
@@ -63,14 +65,34 @@ func main() {
 	if e = s.Seed(ctx); e != nil {
 		log.Fatal(e)
 	}
+	if e = s.RecoverAITurns(ctx); e != nil {
+		log.Fatal("AI conversation recovery failed")
+	}
+	if e = s.RecoverMCP(ctx); e != nil {
+		log.Fatal("MCP audit recovery failed")
+	}
 	if e = s.Reconcile(ctx); e != nil {
 		log.Fatal("storage reconciliation failed")
+	}
+	workerCtx, stopWorker := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stopWorker()
+	s.StartMaterialCleanup(workerCtx)
+	if e = s.StartIndexer(workerCtx); e != nil {
+		log.Fatal("index worker initialization failed")
 	}
 	address := os.Getenv("API_ADDR")
 	if address == "" {
 		address = ":8080"
 	}
 	log.Printf("CampusClaw API listening on %s", address)
-	server := http.Server{Addr: address, Handler: s.Handler(), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 30 * time.Second, WriteTimeout: 30 * time.Second, IdleTimeout: 60 * time.Second}
-	log.Fatal(server.ListenAndServe())
+	server := http.Server{Addr: address, Handler: s.Handler(), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 30 * time.Second, WriteTimeout: 45 * time.Second, IdleTimeout: 60 * time.Second}
+	go func() {
+		<-workerCtx.Done()
+		shutdown, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+		_ = server.Shutdown(shutdown)
+	}()
+	if e := server.ListenAndServe(); e != nil && e != http.ErrServerClosed {
+		log.Fatal(e)
+	}
 }

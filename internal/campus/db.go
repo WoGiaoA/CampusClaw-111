@@ -16,22 +16,55 @@ import (
 var schema string
 
 func Migrate(ctx context.Context, db *sql.DB) error {
-	for _, statement := range strings.Split(schema, ";") {
+	base, retrieval, _ := strings.Cut(schema, "-- RETRIEVAL TABLES")
+	for _, statement := range strings.Split(base, ";") {
 		if strings.TrimSpace(statement) != "" {
 			if _, err := db.ExecContext(ctx, statement); err != nil {
 				return err
 			}
 		}
 	}
-	var count int
-	if err := db.QueryRowContext(ctx, "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name='users' AND column_name='must_change_password'").Scan(&count); err != nil {
+
+	var keyCount int
+	if err := db.QueryRowContext(ctx, "SELECT COUNT(*) FROM information_schema.statistics WHERE table_schema=DATABASE() AND table_name='knowledge_entries' AND index_name='entry_material_class'").Scan(&keyCount); err != nil {
 		return err
 	}
-	if count == 0 {
-		_, err := db.ExecContext(ctx, "ALTER TABLE users ADD COLUMN must_change_password BOOLEAN NOT NULL DEFAULT FALSE")
+	if keyCount == 0 {
+		if _, err := db.ExecContext(ctx, "ALTER TABLE knowledge_entries ADD UNIQUE KEY entry_material_class(id,material_id,class_id)"); err != nil {
+			return err
+		}
+	}
+	for _, statement := range strings.Split(retrieval, ";") {
+		if strings.TrimSpace(statement) != "" {
+			if _, err := db.ExecContext(ctx, statement); err != nil {
+				return err
+			}
+		}
+	}
+	for _, column := range []struct {
+		name string
+		ddl  string
+	}{
+		{"must_change_password", "ALTER TABLE users ADD COLUMN must_change_password BOOLEAN NOT NULL DEFAULT FALSE"},
+		{"nickname", "ALTER TABLE users ADD COLUMN nickname VARCHAR(24) NULL"},
+	} {
+		var count int
+		if err := db.QueryRowContext(ctx, "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name='users' AND column_name=?", column.name).Scan(&count); err != nil {
+			return err
+		}
+		if count == 0 {
+			if _, err := db.ExecContext(ctx, column.ddl); err != nil {
+				return err
+			}
+		}
+	}
+	if err := migrateAI(ctx, db); err != nil {
 		return err
 	}
-	return nil
+	if err := migrateMCP(ctx, db); err != nil {
+		return err
+	}
+	return migrateMaterialDeletion(ctx, db)
 }
 
 // Seed is deliberately separate from schema creation; all missing secrets are
@@ -110,6 +143,9 @@ func (s *Server) Seed(ctx context.Context) error {
 			return e
 		}
 	}
+	if err = seedAI(ctx, tx); err != nil {
+		return err
+	}
 	if err = tx.Commit(); err != nil {
 		return err
 	}
@@ -123,7 +159,7 @@ func (s *Server) Reconcile(ctx context.Context) error {
 	if err := os.MkdirAll(s.Config.UploadDir, 0700); err != nil {
 		return err
 	}
-	rows, err := s.DB.QueryContext(ctx, "SELECT m.storage_key,k.id FROM materials m LEFT JOIN knowledge_entries k ON k.material_id=m.id AND k.class_id=m.class_id")
+	rows, err := s.DB.QueryContext(ctx, "SELECT m.storage_key,k.id,m.deleted_at FROM materials m LEFT JOIN knowledge_entries k ON k.material_id=m.id AND k.class_id=m.class_id")
 	if err != nil {
 		return err
 	}
@@ -132,17 +168,18 @@ func (s *Server) Reconcile(ctx context.Context) error {
 	for rows.Next() {
 		var key string
 		var kid sql.NullInt64
-		if err = rows.Scan(&key, &kid); err != nil {
+		var deleted sql.NullTime
+		if err = rows.Scan(&key, &kid, &deleted); err != nil {
 			return err
 		}
-		if !kid.Valid {
+		if !kid.Valid && !deleted.Valid {
 			return errors.New("incomplete material/knowledge association")
 		}
 		p, e := s.storagePath(key)
 		if e != nil {
 			return e
 		}
-		if _, e = os.Stat(p); e != nil {
+		if _, e = os.Stat(p); e != nil && (!deleted.Valid || !os.IsNotExist(e)) {
 			return errors.New("committed material file missing")
 		}
 		referenced[filepath.Clean(p)] = true

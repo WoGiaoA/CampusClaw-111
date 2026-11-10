@@ -1,0 +1,26 @@
+{
+  "probe": "two real gateway requests with synthetic public fixture; no class data submitted",
+  "results": [
+    {
+      "service": "EMBEDDING",
+      "model": "course-embedding",
+      "http_status": 200,
+      "elapsed_seconds": 0.31,
+      "dimension": 2048,
+      "success": true
+    },
+    {
+      "service": "CHAT",
+      "model": "course-chat",
+      "http_status": 200,
+      "elapsed_seconds": 5.12,
+      "finish_reason": "stop",
+      "has_expected_fact": true,
+      "has_citation": true,
+      "success": true
+    }
+  ],
+  "all_passed": true,
+  "scope": "Lightweight connectivity only: exactly one Embedding and one Chat request, no retries, no bulk indexing or full RAG test.",
+  "remaining": "Full application and browser acceptance remain pending; no claim about quota balance or broad model quality."
+}

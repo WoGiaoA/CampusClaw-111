@@ -2,11 +2,11 @@
 
 ## Context
 
-动机和作业边界见proposal。本设计是待实施方案，不是对当前代码功能的描述。
+动机和作业边界见proposal。本设计已按本轮授权实施，真实服务与主部署等待人工验收；测试边界见第四课交付记录。
 
-已审查的当前实现：Go `net/http` + `database/sql`、MySQL8.4、数据库Session、Nginx同源静态SPA；`materials`保存文件元数据，`knowledge_entries`按材料唯一保存全文。`auth`每请求关联users获取角色、班级和首次改密状态；新增接口直接使用同一上下文。
+复用的第三课基线：Go `net/http` + `database/sql`、MySQL8.4、数据库Session、Nginx同源静态SPA；`materials`保存文件元数据，`knowledge_entries`按材料唯一保存全文。`auth`每请求关联users获取角色、班级和首次改密状态；新增接口直接使用同一上下文。
 
-`upload`当前在进程级 `uploadMu` 下保存文件并事务写入材料/全文，成功返回201及两个ID。数据库事务、锁、Go写超时和Nginx代理超时不适合容纳整份5MiB材料的外部嵌入调用。`db.go`只有建表及单列兼容迁移，没有通用迁移系统；新增表、索引和复合约束需逐项幂等处理。当前Compose只有web/api/db，Qdrant和嵌入网关尚未配置。
+`upload`当前在进程级 `uploadMu` 下保存文件并事务写入材料/全文，成功返回201及两个ID。数据库事务、锁、Go写超时和Nginx代理超时不适合容纳整份5MiB材料的外部嵌入调用。`db.go`只有建表及单列兼容迁移，没有通用迁移系统；新增表、索引和复合约束需逐项幂等处理。本轮Compose增加内部Qdrant，Embedding/Chat网关仍需用户自行配置。
 
 ## Goals / Non-Goals
 
@@ -14,12 +14,12 @@
 
 - 用现有服务完成本班检索和真实文本出处，不复制认证、材料存储或前端技术栈。
 - 将文本持久化与检索索引解耦；状态可观察，失败可重试，外部依赖故障不影响原文。
-- 为本轮OpenSpec作业提供可开发、可验收的方案，所有实现任务保持未完成。
+- 按 OpenSpec tasks 实施 Token 与 RAG，完成隔离自动化测试后等待人工验收。
 
 **Non-Goals:**
 
-- 本轮不执行迁移、模型调用、容器操作或业务实现。
-- 当前变更不提供 `/api/ask`、回答引用生成、历史会话、自定义/标题切分或流式输出。它们可在后续独立变更承接本检索能力。
+- 不操作主业务数据库/凭据/卷，不启停已有业务容器；仅在隔离环境执行开发测试。
+- 不实现历史会话、自定义/标题切分、流式输出或 PDF 报告；本轮新增 /api/ask 和回答引用生成。
 - 不引入Redis、消息队列平台、编排框架、多实例索引调度或无缝影子索引。以下SQL任务只是单实例索引恢复机制，不扩展为通用异步任务平台。
 
 ## Decisions
@@ -55,7 +55,7 @@
 
 ### 3. 数据模型与归属约束
 
-以下是设计字段，不是本轮已执行DDL：
+以下结构已在隔离环境实现与验证；真实业务库由用户部署时增量迁移：
 
 | 对象 | 关键字段和约束 |
 | --- | --- |
@@ -102,13 +102,13 @@ hybrid：两路各最多40候选，先做各自绝对分数过滤和回表校验
 
 source_url使用本站 `/materials?material_id=<id>&chunk_id=<id>`，前端读取参数后通过受保护接口打开本班材料和切片；接口未授权时照常处理401/403/404。excerpt为chunk_text前200码点，不加入假省略号到原文字段。当前UI沿用textContent展示，材料和摘录不解释为HTML。
 
-现有材料工作区增加检索区、模式选择、结果及出处；教师详情可查看索引状态和重建，学生没有写按钮。后台任务可用材料详情刷新观察，不新增全站轮询体系；pending/running时可短时轮询，页面关闭即取消。保留68px顶栏、现有宽度/滚动/移动布局及原接口协议；不复刻教师完整演示站或迁移React。
+现有材料工作区增加检索区、模式选择、结果及出处；教师详情可查看索引状态和重建，学生没有写按钮。后台任务可用材料详情刷新观察，不新增全站轮询体系；本轮使用详情内“刷新索引状态”手动更新，不引入后台页面轮询。保留68px顶栏、现有宽度/滚动/移动布局及原接口协议；不复刻教师完整演示站或迁移React。
 
 ### 7. 配置、网络与基础健康
 
-后续服务端配置拟为 `EMBEDDING_BASE_URL`、`EMBEDDING_MODEL`、`EMBEDDING_API_KEY`、`EMBEDDING_DIMENSION`、`QDRANT_URL`、可选 `QDRANT_API_KEY`。集合名固定campusclaw_chunks；维度必须为正且与网关响应和已存在集合一致，不能猜一个默认维度。集合不存在时按已配置维度创建，已存在却不匹配时失败，绝不删真实集合重建。
+服务端配置为 `EMBEDDING_BASE_URL`、`EMBEDDING_MODEL`、`EMBEDDING_API_KEY`、`EMBEDDING_DIMENSION`、`QDRANT_URL`、可选 `QDRANT_API_KEY`。集合名固定campusclaw_chunks；维度必须为正且与网关响应和已存在集合一致，不能猜一个默认维度。集合不存在时按已配置维度创建，已存在却不匹配时失败，绝不删真实集合重建。
 
-模型签名由规范化base URL、模型名和维度构成，不含密钥；每批记录。当前配置与已有ready索引签名不同，vector/hybrid返回503并要求明确重建，避免混用；keyword仍可读取文本。网关确切地址、模型和维度在Apply前通过实际课程账号配置确认，这不会改变接口或任务划分。
+模型签名由规范化base URL、模型名和维度构成，不含密钥；每批记录。当前配置与已有ready索引签名不同，vector/hybrid返回503并要求明确重建，避免混用；keyword仍可读取文本。网关确切地址、模型和维度在用户部署验收前通过实际课程账号配置确认，这不会改变接口或任务划分。
 
 Compose增加内部qdrant服务和qdrant-data卷，不配置ports，浏览器不直连。api不以Qdrant健康为启动硬前提；基础health仍检查MySQL与上传存储。Qdrant失败由索引状态和vector/hybrid 503表达，不让整站被标为无法使用。
 
@@ -124,7 +124,7 @@ Compose增加内部qdrant服务和qdrant-data卷，不配置ports，浏览器不
 
 ## Migration Plan
 
-以下均为后续Apply及运行计划，本轮不执行：
+以下为本轮开发与用户部署验收计划：
 
 1. Review本变更，确认网关配置；保存数据库/原文件的配对备份和现有行、文件摘要，不重置真实凭据。
 2. 增量建立所需唯一键、两个新表和全文索引；DDL逐项检查是否存在，已有不兼容约束明确报错，不DROP旧表。验证MySQL ngram配置，保留已有卷。
@@ -135,5 +135,15 @@ Compose增加内部qdrant服务和qdrant-data卷，不配置ports，浏览器不
 
 ## Open Questions
 
-- 课程网关实际可用的base URL、模型、维度和限额：作为部署参数在Apply前核实，未知值不得填写虚构默认值或公开凭据。
-- Qdrant镜像的可获取固定版本：在实际部署时选择并记录验证版本，本次不拉镜像、不承诺未经验证的兼容版本。
+- 课程网关实际可用的base URL、模型、维度和限额：作为部署参数在用户部署验收前核实，未知值不得填写虚构默认值或公开凭据。
+- Qdrant镜像的可获取固定版本：在实际部署时选择并记录验证版本，隔离测试选择 qdrant/qdrant:v1.14.1，真实部署待用户执行。
+
+## 实施补充（取代原来的仅规划范围）
+
+用户授权 Token + RAG Apply。登录将同一随机 Session 值作为 access_token 返回，保持旧 Cookie 与 User 顶层字段。Authorization 优先且严格解析，logout 用实际认证凭据撤销，不依赖 Cookie 存在。前端 sessionStorage 存 Token，所有受保护 fetch 统一加头，下载改为认证 fetch + Blob；CSRF 保留。me 不回传 Token。八小时到期，无刷新令牌或 JWT 新依赖。
+
+POST /api/ask 使用 question、hybrid limit=4，无历史会话；30秒内完成（检索20秒，生成最多剩余预算且上限20秒），Nginx/API写响应预算增加到45秒。服务端 CHAT_BASE_URL、CHAT_MODEL、CHAT_API_KEY 与 Embedding 独立配置，不猜测网关参数。提示明确证据是不可信材料、只按证据回答并引用 [n]。响应含 answer、citations（编号与Hit字段及完整chunk_text），校验编号存在且至少一个合法引用；空、截断、越界输出503。校验编号不能证明语义正确，留人工核对。无依据分支固定提示是产品行为，不是假模型。
+
+迁移顺序：先建立 knowledge_entries 的复合唯一键，再创建 jobs/chunks；单实例 worker 启动恢复 running，定时补齐缺失任务，外部服务调用在事务外。使用 job+generation 复合约束，教师重建先删旧片再递增代次；SQL 条件发布。模型签名使用 SHA256(base URL/model/dimension)，不含密钥。集合初建后校验维度及 Cosine，不删除集合。ngram_token_size 必须2。API/HTTP替身与真实 MySQL隔离测试分开记载；真实网关和容器留给用户验收。
+
+Qdrant可选API_KEY为空时会触发其认证分支，Compose通过deploy/qdrant-entrypoint.sh先unset空变量再执行镜像原入口；非空密钥保持不变。隔离测试复用该脚本验证默认配置，shell文件以LF保存。

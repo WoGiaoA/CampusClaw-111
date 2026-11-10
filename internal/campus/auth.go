@@ -11,6 +11,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 	"net"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -41,7 +42,7 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 	}
 	var u User
 	var passwordHash string
-	err := s.DB.QueryRowContext(r.Context(), "SELECT u.id,u.username,u.role,u.class_id,c.name,u.password_hash,u.must_change_password FROM users u JOIN classes c ON u.class_id=c.id WHERE u.username=?", input.Username).Scan(&u.ID, &u.Username, &u.Role, &u.ClassID, &u.ClassName, &passwordHash, &u.MustChangePassword)
+	err := s.DB.QueryRowContext(r.Context(), "SELECT u.id,u.username,u.nickname,u.role,u.class_id,c.name,u.password_hash,u.must_change_password FROM users u JOIN classes c ON u.class_id=c.id WHERE u.username=?", input.Username).Scan(&u.ID, &u.Username, &u.Nickname, &u.Role, &u.ClassID, &u.ClassName, &passwordHash, &u.MustChangePassword)
 	if err != nil && !errors.Is(err, sql.ErrNoRows) {
 		problem(w, 503, "服务暂不可用")
 		return
@@ -116,8 +117,8 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 		problem(w, 401, "账号或密码错误")
 		return
 	}
-	if old, e := r.Cookie(cookieName); e == nil {
-		if _, e = tx.ExecContext(r.Context(), "DELETE FROM sessions WHERE id_hash=?", s.sessionHash(old.Value)); e != nil {
+	if old, ok := credential(r); ok {
+		if _, e = tx.ExecContext(r.Context(), "DELETE FROM sessions WHERE id_hash=?", s.sessionHash(old)); e != nil {
 			problem(w, 503, "服务暂不可用")
 			return
 		}
@@ -131,7 +132,13 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.SetCookie(w, s.cookie(id, 8*60*60))
-	writeJSON(w, 200, u)
+	u.CSRF = csrf
+	writeJSON(w, 200, struct {
+		User
+		AccessToken string `json:"access_token"`
+		TokenType   string `json:"token_type"`
+		ExpiresIn   int    `json:"expires_in"`
+	}{u, id, "Bearer", 28800})
 }
 func validCSRF(r *http.Request, u User) bool {
 	return u.CSRF != "" && subtle.ConstantTimeCompare([]byte(r.Header.Get("X-CSRF-Token")), []byte(u.CSRF)) == 1
@@ -141,11 +148,37 @@ func (s *Server) logout(w http.ResponseWriter, r *http.Request) {
 		problem(w, 403, "请求校验失败")
 		return
 	}
-	c, _ := r.Cookie(cookieName)
-	if _, e := s.DB.ExecContext(r.Context(), "DELETE FROM sessions WHERE id_hash=?", s.sessionHash(c.Value)); e != nil {
+	id, _ := credential(r)
+	if _, e := s.DB.ExecContext(r.Context(), "DELETE FROM sessions WHERE id_hash=?", s.sessionHash(id)); e != nil {
 		problem(w, 503, "服务暂不可用")
 		return
 	}
 	http.SetCookie(w, s.cookie("", -1))
 	writeJSON(w, 200, map[string]bool{"ok": true})
+}
+
+// Explicit Authorization never falls back to Cookie.
+func credential(r *http.Request) (string, bool) {
+	var token string
+	if values, exists := r.Header["Authorization"]; exists {
+		if len(values) != 1 {
+			return "", false
+		}
+		fields := strings.Fields(values[0])
+		if len(fields) != 2 || !strings.EqualFold(fields[0], "Bearer") {
+			return "", false
+		}
+		token = fields[1]
+	} else {
+		c, e := r.Cookie(cookieName)
+		if e != nil {
+			return "", false
+		}
+		token = c.Value
+	}
+	if len(token) != 64 {
+		return "", false
+	}
+	_, e := hex.DecodeString(token)
+	return token, e == nil
 }

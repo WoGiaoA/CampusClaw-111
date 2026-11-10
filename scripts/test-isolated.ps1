@@ -1,4 +1,5 @@
 # Run from Windows PowerShell 5.1 or newer. Never reads .env or starts Docker.
+param([switch]$APITest, [switch]$RealGateway)
 $ErrorActionPreference='Stop'
 $projectRoot=Split-Path $PSScriptRoot -Parent
 Set-Location -LiteralPath $projectRoot
@@ -42,7 +43,26 @@ try {
  $env:MYSQL_TEST_ADDR="127.0.0.1:$testPort"
  $env:MYSQL_ROOT_PASSWORD=$testPassword
  Write-Output 'Running real HTTP/DB tests against a new isolated MySQL data directory; no business database or Docker is used.'
- & "$PSScriptRoot\test.ps1" -Integration
+ if ($APITest -or $RealGateway) {
+  $env:CAMPUSCLAW_APITEST_MYSQL_EXE=Join-Path $mysqlTools.FullName 'bin\mysql.exe'
+  $nginxTools=Get-ChildItem -LiteralPath '.local\tools' -Directory -Filter 'nginx-*' | Select-Object -First 1
+  if($nginxTools){$env:CAMPUSCLAW_APITEST_NGINX_EXE=Join-Path $nginxTools.FullName 'nginx.exe'}
+  $env:GOPATH=Join-Path $projectRoot '.local\gopath'
+  $env:GOCACHE=Join-Path $projectRoot '.local\gocache'
+  $goCommand=Get-Command go -ErrorAction SilentlyContinue
+  $go=if($goCommand){$goCommand.Source}else{Join-Path $projectRoot '.local\tools\go\bin\go.exe'}
+  if ($RealGateway) {
+   & $go test -tags realgateway ./internal/campus -run '^TestExplicitRealGatewayConversation$' -count=1 -v
+  } else {
+   $env:CAMPUSCLAW_TEST_MCP_EXE=Join-Path $runRoot 'campus-mcp.exe'
+   & $go build -o $env:CAMPUSCLAW_TEST_MCP_EXE ./mcp-server
+   if($LASTEXITCODE -ne 0){throw 'MCP test server build failed'}
+   & $go test -tags apitest ./internal/campus -run '^TestAPITestRunner$' -count=1 -v
+  }
+  if($LASTEXITCODE -ne 0){throw 'AI/MCP verification failed'}
+ } else {
+  & "$PSScriptRoot\test.ps1" -Integration
+ }
 } catch {$testFailure=$_} finally {
  if($serverProcess){
   $serverProcess.Refresh()

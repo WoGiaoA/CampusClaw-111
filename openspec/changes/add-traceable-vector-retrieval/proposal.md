@@ -2,9 +2,9 @@
 
 ## Why
 
-CampusClaw 第三课已支持登录、角色权限、班级隔离及材料全文入库，但师生仍需打开整份材料人工寻找答案。本变更拟增加限定本班范围、可回到材料原文的知识库检索，完成第四课作业所需的 OpenSpec 变更描述。
+CampusClaw 第三课已支持登录、角色权限、班级隔离及材料全文入库，但师生仍需打开整份材料人工寻找答案。本变更拟增加限定本班范围、可回到材料原文的知识库检索，完成第四课 Token 登录与基于知识库的 AI 问答开发。
 
-作业来源为用户提供的第四课作业截图：交付是第四课的 OpenSpec 变更描述，基本能力是班级范围内检索和内容溯源，向量数据库可考虑使用；用户自行提交公开仓库地址。本轮只完成规约，不实现代码、不同步主规格、不归档，也不宣称功能已经完成。
+最新用户要求取代此前仅规划范围：本轮实现 Token 登录和真实 RAG 问答，完成隔离自动化测试及开发文档，等待人工验收；PDF 实现方案报告暂缓，不生成或提前准备。
 
 ## What Changes
 
@@ -14,7 +14,7 @@ CampusClaw 第三课已支持登录、角色权限、班级隔离及材料全文
 - 选用 MySQL 中文 ngram 全文索引、服务端 Embedding、Qdrant 余弦检索和 RRF 排序。这是本项目采用的实现方案，不是老师强制要求使用向量数据库。
 - 索引工作与材料保存分离，提供状态、失败重试和本班教师重建入口；覆盖第三课已有材料，失败不影响查看和下载原文。
 - 区分无命中与依赖故障，提供空结果和可读错误；保持旧登录、改密、上传、详情和下载协议兼容。
-- 本次正式变更不包含回答生成、自定义/标题切分、流式会话、重排序、PDF/OCR、MCP或技能业务。前两项属于课程可继续规划的能力，不能当成本作业必须实现和提交的内容。
+- 新增 POST /api/ask：本班 hybrid 前4条证据调用真实模型，回答及编号引用；无命中不调用生成服务。新增不透明 Bearer Token，复用 sessions 摘要/过期/撤销及 Cookie 兼容。仍不包含自定义/标题切分、流式会话、重排序、PDF/OCR、MCP或技能业务。
 
 ## Capabilities
 
@@ -25,14 +25,15 @@ CampusClaw 第三课已支持登录、角色权限、班级隔离及材料全文
 ### Modified Capabilities
 
 - `teaching-materials`：明确原文件/全文保存事务不依赖模型；允许提交后独立建索引，保留201和既有读写边界。
+- `class-access`：登录返回 Token、优先 Bearer、Cookie 兼容、撤销和浏览器携带。
 - `project-runtime`：增加切片与索引任务的持久化结构、内部Qdrant与嵌入配置，保留既有服务和基础健康检查。
 
-`class-access`、`account-password-management` 的现行规则直接复用，不另建身份机制；新接口的授权验收场景写在 `knowledge-retrieval`。
+`class-access` 新增可撤销 Bearer Token 契约，保留原会话边界；`account-password-management` 规则直接复用。
 
 ## Impact
 
-- 后续代码影响：`internal/campus` 的schema/迁移/上传后索引及新检索模块，`server.go`路由、`config.go`配置，`web`检索与出处展示；本轮不编辑这些文件。
-- 后续部署影响：`docker-compose.yml`增加内部Qdrant及卷，`.env.example`增加嵌入服务与集合配置；不开放数据库或向量库宿主机端口。
+- 代码影响：`internal/campus` 的schema/迁移/上传后索引及新检索模块，`server.go`路由、`config.go`配置，`web`检索与出处展示；本轮按 tasks 实施这些文件。
+- 部署影响：`docker-compose.yml`增加内部Qdrant及卷，`.env.example`增加嵌入服务与集合配置；不开放数据库或向量库宿主机端口。
 - 数据影响：增量新增 `knowledge_chunks`、`knowledge_index_jobs`及所需索引/复合唯一键；保留用户、凭据、Session、材料ID、全文、文件和现有卷。
-- 后续验证：双班师生、匿名/首次改密/伪造身份、三模式与真实出处、失败保留、重建与第三课回归。任务保持未完成状态，当前只验证文档完整性和规约格式。
-- 作业范围映射、文件索引和文档校验记录见 `deliverables/lesson-04/README.md`；正式业务Apply须后续单独授权。
+- 验证：双班师生、匿名/首次改密/伪造身份、Token 撤销、三模式、问答与引用、失败保留、重建与第三课回归；实际结果见交付索引，真实模型及部署留待用户验收。
+- 作业范围映射、文件索引和文档校验记录见 `deliverables/lesson-04/README.md`；本轮 Apply 已由用户明确授权。

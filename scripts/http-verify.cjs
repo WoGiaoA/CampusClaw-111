@@ -7,6 +7,7 @@ const evidence = { timestamp: new Date().toISOString(), base, transport: process
 function record(name, response, body, detail = {}) {
  const headers = Object.fromEntries(response.headers.entries());
  if (headers['set-cookie']) headers['set-cookie'] = headers['set-cookie'].replace(/campusclaw_session=[^;]*/, 'campusclaw_session=[REDACTED]');
+ if (body && typeof body === 'object' && body.access_token) body = { ...body, access_token: '[REDACTED]' };
  if (body && typeof body === 'object' && body.csrf_token) body = { ...body, csrf_token: '[REDACTED]' };
  evidence.checks.push({ name, status: response.status, headers, body, ...detail });
 }

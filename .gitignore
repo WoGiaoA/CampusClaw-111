@@ -7,4 +7,31 @@ uploads/
 *.exe
 *.test
 coverage.out
+# Keep apitest source scripts; generated HTML reports are local only.
+/apitest/reports/
+apitest/**/__pycache__/
 
+# Course reports are submitted separately and kept locally.
+/deliverables/**/*.docx
+/deliverables/**/*.pdf
+
+# Office lock files, caches, dependencies, and generated logs.
+~$*
+~WRL*.tmp
+*.tmp
+*.temp
+*.log
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Submit only reader-facing setup, feature and testing docs.
+# Local research, prototypes, UI iteration notes and history stay on disk.
+/docs/*
+!/docs/account-management.md
+!/docs/teacher-quickstart.md
+!/docs/material-deletion.md
